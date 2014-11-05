@@ -1,0 +1,120 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+>
+
+	<div align="center" class="bg-red">
+
+		<p:tabView>
+			<p:tab title="Download">
+				<h:panelGrid columns="2" cellpadding="10">
+					<h:form>
+						<div align="center">
+							<h:selectOneMenu id="console" value="#{amendBean.selection}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+								<f:selectItem itemLabel="PS4" itemValue="PS4" />
+								<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+							</h:selectOneMenu>
+
+							<p:separator />
+<h:panelGrid  style="width:600px;">
+							<h:form id="formId">
+								<p:dataTable var="dtoBean" value="#{selectOneMenuView.listDtoBean}" id="testTable">
+									<p:column headerText="Data Field">
+										<h:outputText value="#{dtoBean.string}" />
+									</p:column>
+
+									<p:column headerText="Opeater">
+										<h:outputText value="#{dtoBean.string2}" />
+									</p:column>
+
+									<p:column headerText="Value">
+										<h:outputText value="#{dtoBean.string3}" />
+									</p:column>
+									<p:column headerText="Action">
+										<h:commandButton value="Delete" actionListener="#{selectOneMenuView.deleteEditTab(dtoBean)}" update="testTable" />
+									</p:column>
+
+
+								</p:dataTable>
+
+								<h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="5">
+									<p:commandButton value="+" id="ajax" actionListener="#{selectOneMenuView.addEditTab}" update="testTable" />
+									<h:selectOneMenu id="menuId" value="#{selectOneMenuView.city}">
+										<f:selectItem itemLabel="Select One" itemValue="" />
+										<f:selectItems value="#{selectOneMenuView.cities}" />
+									</h:selectOneMenu>
+
+
+									<h:selectOneMenu id="menuId2" value="#{selectOneMenuView.console}">
+										<f:selectItem itemLabel="Select One" itemValue="" />
+										<f:selectItem itemLabel="Equal" itemValue="Equal" />
+										<f:selectItem itemLabel="Not equal" itemValue="Not equal" />
+										<f:selectItem itemLabel="Smaller than" itemValue="Smaller Than" />
+										<f:selectItem itemLabel="Bigger than" itemValue="Bigger Than" />
+										<f:selectItem itemLabel="Like" itemValue="Like" />
+									</h:selectOneMenu>
+
+									<h:inputText value="C" id="textC" />
+
+									<p:commandButton value="Filter" />
+									<p:commandButton value="Clear" update="testTable" actionListener="#{selectOneMenuView.clearEditTab}" />
+
+								</h:panelGrid>
+
+
+							</h:form>
+</h:panelGrid>
+							<p:separator />
+
+							<p:dataTable id="withCommand" var="article" value="#{amendBean.articleList}" rowKey="#{article.id}">
+
+								<p:column headerText="Article Number (Virtual)">#{article.id}</p:column>
+								<p:column headerText="SAP Article Number">#{article.col1}</p:column>
+								<p:column headerText="System Status">#{article.col2}</p:column>
+								<p:column headerText="Article Status">#{article.col3}</p:column>
+								<p:column headerText="QA Status">#{article.col4}</p:column>
+							</p:dataTable>
+
+							<p:separator />
+
+							<h:commandButton class="main_left_button" value="Text">
+							</h:commandButton>
+						</div>
+					</h:form>
+				</h:panelGrid>
+			</p:tab>
+
+			<p:tab title="Upload">
+				<h:panelGrid columns="2" cellpadding="10">
+
+					<div align="center" style="border: 0x solid black; margin-top: 5%; margin-left: 30%; margin-right: 30%">
+						<div align="center">
+
+							<h:panelGrid style="  border-collapse: collapse;
+			 border:1px solid black;margin-top: 10%;">
+
+								<h:form id="form">
+
+
+									<h:panelGrid id="grid" columns="2" cellpadding="5">
+
+										<h:outputText value="Choose Article Template " />
+										<p:fileUpload value="#{createArticleBean.file}" mode="simple" />
+
+										<h:commandButton value="Validate Article Template" ajax="false" />
+									</h:panelGrid>
+
+
+								</h:form>
+							</h:panelGrid>
+
+						</div>
+					</div>
+
+				</h:panelGrid>
+			</p:tab>
+
+		</p:tabView>
+	</div>
+</ui:composition>

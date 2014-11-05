@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core"
+>
+
+	<div align="center">
+		<p:tabView id="tabview">
+
+			<p:tab title="Main">
+				<h:panelGrid columns="1" cellpadding="10">
+
+					<h:form>
+						<h:panelGrid style="margin-left:30%;">
+							<h:panelGrid style="width:600px;">
+								<ui:insert name="filter">
+									<ui:include src="http://localhost:8080/cpdb/base/Filter.xhtml" />
+								</ui:insert>
+							</h:panelGrid>
+						</h:panelGrid>
+						<p:separator></p:separator>
+						<p:dataTable value="#{defineProductTemplateBean.productTemplates}" var="target">
+							<p:column headerText="#">
+								<h:outputText value="#{target.ptId}" />
+							</p:column>
+
+							<p:column headerText="Template Name">
+								<h:outputText value="#{target.ptName}" />
+							</p:column>
+
+							<p:column>
+								<h:commandButton update=":tabview" value="Edit" actionListener="#{defineProductTemplateBean.addEditTab}">
+									<f:param name="id" value="#{target.ptId}" />
+									<f:param name="name" value="#{target.ptName}" />
+									<f:param name="desc" value="desc" />
+								</h:commandButton>
+							</p:column>
+						</p:dataTable>
+					</h:form>
+				</h:panelGrid>
+			</p:tab>
+
+			<c:forEach items="#{defineProductTemplateBean.dtoList}" var="dto">
+				<p:tab title="Tab">
+					<h:form>
+						<h:commandButton update=":tabview" value="Close" action="#{defineProductTemplateBean.onEditTabClose}">
+							<f:param name="index" value="#{dto.index}" />
+						</h:commandButton>
+					</h:form>
+				</p:tab>
+			</c:forEach>
+		</p:tabView>
+	</div>
+
+</ui:composition>

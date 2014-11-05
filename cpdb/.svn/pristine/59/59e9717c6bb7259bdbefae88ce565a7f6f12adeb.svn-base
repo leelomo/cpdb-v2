@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<div align="center">
+		<h:panelGrid style="width:600px;">
+			<h:panelGrid columns="2" cellpadding="10">
+
+
+				<h:form prependId="false">
+					<h:panelGrid columns="5" style="margin-bottom:10px" cellpadding="5">
+						<p:commandLink actionListener="#{filterBean.addFilterRow}"
+							update="filterTable">
+							<p:graphicImage value="/images/btn_Plus.png" />
+						</p:commandLink>
+						<p:commandButton value="Clear" action="#{filterBean.clearEditTab}"
+							update="filterTable" />
+
+						<p:commandButton value="Filter" />
+
+					</h:panelGrid>
+
+					<p:dataTable value="#{filterBean.filterList}" var="filterDto"
+						id="filterTable" editable="true" styleClass="hide-column-names">
+						<p:ajax event="rowEdit" />
+						<p:ajax event="rowEditCancel" />
+
+						<p:column headerText="Action" style="width:30px">
+							<p:commandLink
+								actionListener="#{filterBean.deleteFilterRow(filterDto)}"
+								update="filterTable">
+								<p:graphicImage value="/images/btn_Minus.png" />
+							</p:commandLink>
+						</p:column>
+
+						<p:column headerText="Data Field">
+							<h:selectOneMenu value="#{filterDto.field}" style="width: 100%;">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItems value="#{filterBean.filterFields}"
+									var="filterField" itemLabel="#{filterField}" />
+							</h:selectOneMenu>
+						</p:column>
+
+						<p:column headerText="Operator">
+							<h:selectOneMenu value="#{filterDto.operator}"
+								style="width: 100%;">
+								<f:selectItem itemLabel="null" itemValue="" />
+								<f:selectItem itemLabel="Equal" itemValue="Equal" />
+								<f:selectItem itemLabel="Not equal" itemValue="NotEqual" />
+								<f:selectItem itemLabel="Smaller than" itemValue="SmallerThan" />
+								<f:selectItem itemLabel="Bigger than" itemValue="BiggerThan" />
+								<f:selectItem itemLabel="Like" itemValue="Like" />
+							</h:selectOneMenu>
+						</p:column>
+
+						<p:column headerText="Value">
+							<h:inputText value="#{filterDto.value}" style="width: 100%;" />
+						</p:column>
+
+					</p:dataTable>
+
+
+				</h:form>
+
+
+			</h:panelGrid>
+
+		</h:panelGrid>
+	</div>
+
+</ui:composition>

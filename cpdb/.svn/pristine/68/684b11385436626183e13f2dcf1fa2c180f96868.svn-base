@@ -1,0 +1,51 @@
+package hk.ed.cpdb.bean;
+
+import hk.ed.cpdb.entitytemp.SystemLog;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
+
+@ManagedBean
+@ApplicationScoped
+public class SystemLogBean {
+
+	private List<SystemLog> systemLogs = new ArrayList<SystemLog>();
+
+	public List<SystemLog> getSystemLogs() {
+		// init();
+		systemLogs = new ArrayList<SystemLog>();
+		SystemLog systemLog1 = new SystemLog(1, new Date(), "Apple", "Update something");
+		SystemLog systemLog2 = new SystemLog(2, new Date(), "Apple", "Update something");
+		SystemLog systemLog3 = new SystemLog(3, new Date(), "Apple", "Update something");
+		SystemLog systemLog4 = new SystemLog(4, new Date(), "Apple", "Update something");
+		SystemLog systemLog5 = new SystemLog(5, new Date(), "Apple", "Update something");
+		SystemLog systemLog6 = new SystemLog(6, new Date(), "Apple", "Update something");
+		SystemLog systemLog7 = new SystemLog(7, new Date(), "Apple", "Update something");
+		SystemLog systemLog8 = new SystemLog(8, new Date(), "Apple", "Update something");
+		SystemLog systemLog9 = new SystemLog(9, new Date(), "Apple", "Update something");
+		SystemLog systemLog10 = new SystemLog(10, new Date(), "Apple", "Update something");
+
+		systemLogs.add(systemLog1);
+		systemLogs.add(systemLog2);
+		systemLogs.add(systemLog3);
+		systemLogs.add(systemLog4);
+		systemLogs.add(systemLog5);
+		systemLogs.add(systemLog6);
+		systemLogs.add(systemLog7);
+		systemLogs.add(systemLog8);
+		systemLogs.add(systemLog9);
+		systemLogs.add(systemLog10);
+
+		return systemLogs;
+	}
+
+	public void setSystemLogs(List<SystemLog> systemLogs) {
+		this.systemLogs = systemLogs;
+	}
+
+}

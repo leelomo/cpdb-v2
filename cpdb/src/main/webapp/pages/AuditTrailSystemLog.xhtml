@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:panelGrid columns="1">
+		<h:panelGrid>
+						<ui:insert name="filter" style="border-style:solid; border-width:1px">
+				<ui:include src="#{GlobalBean.filterPath}">
+					<ui:param name="filterBean" value="#{systemLogBean.filterBean}" />
+				</ui:include>
+			</ui:insert>
+		</h:panelGrid>
+
+		<p:separator></p:separator>
+		<h:form>
+			<p:dataTable var="systemlog" value="#{systemLogBean.systemLogs}">
+				<p:column
+					headerText="#{languageLabel['AUDIT_TRAIL_System_Log_DataTable_Title_Event_ID']}">
+					<h:outputText value="#{systemlog.eventID}" />
+				</p:column>
+
+				<p:column
+					headerText="#{languageLabel['AUDIT_TRAIL_System_Log_DataTable_Title_Time']}">
+					<h:outputText value="#{systemlog.time}" />
+				</p:column>
+
+				<p:column
+					headerText="#{languageLabel['AUDIT_TRAIL_System_Log_DataTable_Title_Actor']}">
+					<h:outputText value="#{systemlog.actor}" />
+				</p:column>
+
+				<p:column
+					headerText="#{languageLabel['AUDIT_TRAIL_System_Log_DataTable_Title_Description']}">
+					<h:outputText value="#{systemlog.desc}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</h:panelGrid>
+
+</ui:composition>

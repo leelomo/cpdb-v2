@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<div align="center">
+		<p:tabView>
+			<p:tab title="#{languageLabel['AUDIT_TRAIL_Tab_Title_System_Log']}">
+				<div style="float: left;">
+					<ui:include src="/pages/AuditTrailSystemLog.xhtml" />
+				</div>
+			</p:tab>
+			<p:tab
+				title="#{languageLabel['AUDIT_TRAIL_Tab_Title_Authentication_Log']}">
+				<div style="float: left;">
+					<ui:include src="/pages/AuditTrailAuthenticationLog.xhtml" />
+				</div>
+			</p:tab>
+
+		</p:tabView>
+	</div>
+
+</ui:composition>

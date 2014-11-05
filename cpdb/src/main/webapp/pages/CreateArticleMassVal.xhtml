@@ -1,0 +1,93 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+>
+
+	<div align="left">
+
+		<p:layout fullPage="false" style="width:100%; height:800px">
+
+			<p:layoutUnit position="west" size="260px" resizable="false" style="padding:10px 20px 20px 20px;">
+
+				<h:form id="nothing">
+					<h:panelGrid id="grid" columns="1" cellpadding="5">
+
+						<p:commandButton value="Cancel Request" action="#{ContectBean.doNav}" styleClass="p_green_button" style="width:200px">
+							<f:param name="page" value="/pages/CreateArticle.xhtml" />
+							<f:param name="pageName" value="Create Article" />
+						</p:commandButton>
+
+						<p:commandButton value="Download Error Summary" ajax="false" styleClass="p_green_button" style="width:200px">
+							<p:fileDownload value="#{createArticleBean.downloadFile}" />
+						</p:commandButton>
+
+						<p:commandButton value="Download failed Articles" ajax="false" styleClass="p_green_button" style="width:200px">
+							<p:fileDownload value="#{createArticleBean.downloadFile}" />
+						</p:commandButton>
+
+						<p:commandButton value="Submit Passed Articles" action="#{ContectBean.doNav}" styleClass="p_green_button" style="width:200px">
+							<f:param name="page" value="/pages/CreateArticle.xhtml" />
+							<f:param name="pageName" value="Create Article" />
+						</p:commandButton>
+					</h:panelGrid>
+
+
+				</h:form>
+
+			</p:layoutUnit>
+
+			<p:layoutUnit position="center">
+
+				<h:form id="formName">
+
+
+					<p:messages for="msg1" id="messages1" showDetail="true" autoUpdate="true" closable="false" />
+
+					<p:messages for="msg2" id="messages2" showDetail="true" autoUpdate="true" closable="false" />
+
+					<p:messages for="msg3" id="messages3" showDetail="true" autoUpdate="true" closable="false" />
+
+					<div class="notShow" style="visibility: hidden;">
+						<p:commandButton for="messages" value="Info" actionListener="#{createArticleMassValBean.info}" id="buttonId2" visible="false" styleClass="p_green_button" />
+					</div>
+
+				</h:form>
+
+				<h:outputText style="font-size:16px" value="Article Validation Result" />
+				<p />
+
+				<h:form id="formName4">
+
+					<p:dataTable id="withCommand" var="article" value="#{createArticleMassValBean.massCreation}">
+						<p:column headerText="#">#{article.id}</p:column>
+						<p:column headerText="Article Description">#{article.col1}</p:column>
+						<p:column headerText="Validation Result">
+							<div style="#{createArticleMassValBean.getInlineCss(article.col2)}" class="dataTable-cellColor-border">#{article.col2}</div>
+						</p:column>
+						<p:column headerText="Number of error">#{article.col3}</p:column>
+
+						<p:column headerText="Error Detail">
+							<p:commandButton value="View" type="button" onclick="PF('dlg1').show();" />
+						</p:column>
+					</p:dataTable>
+
+					<p:dialog header="Error Message" widgetVar="dlg1" modal="false" minHeight="40">
+						<h:outputText value="404 ~Error MessageError MessageError MessageError MessageError Message" />
+					</p:dialog>
+
+				</h:form>
+
+
+			</p:layoutUnit>
+		</p:layout>
+
+	</div>
+
+	<script>
+	$(document).ready(function() {
+		document.getElementById('formName:buttonId2').click();
+	});
+</script>
+
+</ui:composition>
+
+

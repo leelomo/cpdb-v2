@@ -1,0 +1,159 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+
+	<div align="center">
+		<h:form id="formId">
+			<p:tabView>
+				<p:tab title="System log">
+					<h:panelGrid columns="1">
+
+						<p:dataTable var="dtoBean" value="#{selectOneMenuView.listDtoBean}" id="testTable">
+							<p:column headerText="Data Field">
+								<h:outputText value="#{dtoBean.string}" />
+							</p:column>
+
+							<p:column headerText="Opeater">
+								<h:outputText value="#{dtoBean.string2}" />
+							</p:column>
+
+							<p:column headerText="Value">
+								<h:outputText value="#{dtoBean.string3}" />
+							</p:column>
+							<p:column headerText="Action">
+								<p:commandButton value="Delete" actionListener="#{selectOneMenuView.deleteEditTab(dtoBean)}" update="testTable" />
+							</p:column>
+
+
+						</p:dataTable>
+
+						<h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="5">
+							<p:commandButton value="+" id="ajax" actionListener="#{selectOneMenuView.addEditTab}" update="testTable" />
+							<h:selectOneMenu id="menuId" value="#{selectOneMenuView.city}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItems value="#{selectOneMenuView.cities}" />
+							</h:selectOneMenu>
+
+
+							<h:selectOneMenu id="menuId2" value="#{selectOneMenuView.console}">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItem itemLabel="Equal" itemValue="Equal" />
+								<f:selectItem itemLabel="Not equal" itemValue="Not equal" />
+								<f:selectItem itemLabel="Smaller than" itemValue="Smaller Than" />
+								<f:selectItem itemLabel="Bigger than" itemValue="Bigger Than" />
+								<f:selectItem itemLabel="Like" itemValue="Like" />
+							</h:selectOneMenu>
+
+							<h:inputText value="C" id="textC" />
+
+							<p:commandButton value="Filter" />
+							<p:commandButton value="Clear" update="testTable" actionListener="#{selectOneMenuView.clearEditTab}" />
+
+						</h:panelGrid>
+
+
+
+						<p:separator></p:separator>
+						<p:dataTable var="systemlog" value="#{systemLogBean.systemLogs}">
+							<p:column headerText="Event ID">
+								<h:outputText value="#{systemlog.eventID}" />
+							</p:column>
+
+							<p:column headerText="Time">
+								<h:outputText value="#{systemlog.time}" />
+							</p:column>
+
+							<p:column headerText="Actor">
+								<h:outputText value="#{systemlog.actor}" />
+							</p:column>
+
+							<p:column headerText="Description">
+								<h:outputText value="#{systemlog.desc}" />
+							</p:column>
+						</p:dataTable>
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Authentication log">
+					<h:panelGrid columns="1">
+						<h:form id="formId">
+							<p:dataTable var="dtoBean" value="#{selectOneMenuView.listDtoBean}" id="testTable">
+								<p:column headerText="Data Field">
+									<h:outputText value="#{dtoBean.string}" />
+								</p:column>
+
+								<p:column headerText="Opeater">
+									<h:outputText value="#{dtoBean.string2}" />
+								</p:column>
+
+								<p:column headerText="Value">
+									<h:outputText value="#{dtoBean.string3}" />
+								</p:column>
+								<p:column headerText="Action">
+									<p:commandButton value="Delete" actionListener="#{selectOneMenuView.deleteEditTab(dtoBean)}" update="testTable" />
+								</p:column>
+
+
+							</p:dataTable>
+
+							<h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="5">
+								<p:commandButton value="+" id="ajax" actionListener="#{selectOneMenuView.addEditTab}" update="testTable" />
+								<h:selectOneMenu id="menuId" value="#{selectOneMenuView.city}">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItems value="#{selectOneMenuView.cities}" />
+								</h:selectOneMenu>
+
+
+								<h:selectOneMenu id="menuId2" value="#{selectOneMenuView.console}">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItem itemLabel="Equal" itemValue="Equal" />
+									<f:selectItem itemLabel="Not equal" itemValue="Not equal" />
+									<f:selectItem itemLabel="Smaller than" itemValue="Smaller Than" />
+									<f:selectItem itemLabel="Bigger than" itemValue="Bigger Than" />
+									<f:selectItem itemLabel="Like" itemValue="Like" />
+								</h:selectOneMenu>
+
+								<h:inputText value="C" id="textC" />
+
+								<p:commandButton value="Filter" />
+								<p:commandButton value="Clear" update="testTable" actionListener="#{selectOneMenuView.clearEditTab}" />
+
+							</h:panelGrid>
+
+
+						</h:form>
+
+						<p:separator></p:separator>
+						<p:dataTable var="authenticationLog" value="#{authenticationLogBean.authenticationLogs}">
+							<p:column headerText="userID">
+								<h:outputText value="#{authenticationLog.userID}" />
+							</p:column>
+
+							<p:column headerText="loginAttemptTime">
+								<h:outputText value="#{authenticationLog.loginAttemptTime}" />
+							</p:column>
+
+							<p:column headerText="loginResult">
+								<h:outputText value="#{authenticationLog.loginResult}" />
+							</p:column>
+
+							<p:column headerText="sessionIn">
+								<h:outputText value="#{authenticationLog.sessionIn}" />
+							</p:column>
+							<p:column headerText="sessionOut">
+								<h:outputText value="#{authenticationLog.sessionOut}" />
+							</p:column>
+							<p:column headerText="logoutTime">
+								<h:outputText value="#{authenticationLog.logoutTime}" />
+							</p:column>
+						</p:dataTable>
+						<p:commandButton value="Export" ajax="false">
+							<p:fileDownload value="#{createArticleBean.downloadFile}" />
+						</p:commandButton>
+					</h:panelGrid>
+				</p:tab>
+
+			</p:tabView>
+		</h:form>
+	</div>
+
+</ui:composition>

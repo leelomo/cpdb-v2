@@ -1,0 +1,112 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div align="left">
+
+		<p:layout fullPage="false" style="width:100%; height:800px">
+
+			<p:layoutUnit position="west" size="260px" resizable="false"
+				style="padding:10px 20px 20px 20px;">
+
+				<h:form prependId="false">
+
+					<p:fieldset legend="#{languageLabel['CREATE_ARTICLE_Mass_Creation_Fieldset_Title_Download']}"
+						style="margin-bottom:20px;border:1px solid black;">
+						<h:panelGrid columns="1" cellpadding="10">
+
+							<p:outputLabel value="#{languageLabel['CREATE_ARTICLE_Mass_Creation_Label_Select_Article_Template']}"></p:outputLabel>
+							<h:selectOneMenu id="console">
+								<f:selectItem itemLabel="" itemValue="" />
+								<f:selectItem itemLabel="Template 1" itemValue="Template 1" />
+								<f:selectItem itemLabel="Template 2" itemValue="Template 2" />
+								<f:selectItem itemLabel="Template 3" itemValue="Template 3" />
+							</h:selectOneMenu>
+
+							<h:outputText value="Show some info of the template here" />
+
+							<h:commandButton value="#{languageLabel['CREATE_ARTICLE_Mass_Creation_Button_Title_Download_Article_Template']}"
+								style="margin-bottom:5%" styleClass="myButton h_green_button">
+							</h:commandButton>
+
+
+
+						</h:panelGrid>
+					</p:fieldset>
+
+					<p:fieldset legend="#{languageLabel['CREATE_ARTICLE_Mass_Creation_Fieldset_Title_Validate']}"
+						style="margin-bottom:20px;border:1px solid black;">
+						<h:panelGrid columns="1" cellpadding="10">
+							<h:outputText value="#{languageLabel['CREATE_ARTICLE_Mass_Creation_Label_Choose_Article_Template']}" />
+							<p:fileUpload mode="simple" />
+							<p />
+							<h:commandButton value="#{languageLabel['CREATE_ARTICLE_Mass_Creation_Button_Title_Validate_Article_Template']}"
+								action="#{ContectBean.doNav}" style="margin-bottom:5%;"
+								styleClass="myButton h_green_button">
+								<f:param name="page" value="/pages/CreateArticleMassVal.xhtml" />
+								<f:param name="pageName" value="#{languageLabel['MENU_Label_Create_Article']} > #{languageLabel['MENU_Label_Mass_creation']}" />
+							</h:commandButton>
+
+						</h:panelGrid>
+					</p:fieldset>
+
+				</h:form>
+
+
+			</p:layoutUnit>
+
+			<p:layoutUnit position="center">
+				<div align="left">
+
+					<h:outputText style="font-size:16px;" value="Searching Criteria" />
+					<p />
+
+					<h:panelGrid>
+						<ui:insert name="filter"
+							style="border-style:solid; border-width:1px">
+							<ui:include src="#{GlobalBean.filterPath}">
+								<ui:param name="filterBean"
+									value="#{createArticleMassBean.filterBean}" />
+							</ui:include>
+						</ui:insert>
+					</h:panelGrid>
+
+					<p />
+					<h:outputText style="font-size:16px" value="#{languageLabel['CREATE_ARTICLE_Mass_Creation_Label_Matched Articles']}" />
+					<p />
+
+
+					<h:form>
+						<f:ajax render=":layoutMain" execute="@this">
+							<p:dataTable id="withCommand" var="article" paginator="true"
+								paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+								rowsPerPageTemplate="50,100,200"
+								value="#{createArticleMassBean.articleList}"
+								rowKey="#{article.id}">
+								<p:column headerText="#{languageLabel['CREATE_ARTICLE_Mass_Creation_DataTable_Title_Virtual_Article_Number']}">#{article.id}</p:column>
+								<p:column headerText="#{languageLabel['CREATE_ARTICLE_Mass_Creation_DataTable_Title_SAP_Article_Number']}">#{article.col1}</p:column>
+								<p:column headerText="#{languageLabel['CREATE_ARTICLE_Mass_Creation_DataTable_Title_System_Status']}">#{article.col2}</p:column>
+								<p:column headerText="#{languageLabel['CREATE_ARTICLE_Mass_Creation_DataTable_Title_Article_Status']}">#{article.col3}</p:column>
+								<p:column headerText="#{languageLabel['CREATE_ARTICLE_Mass_Creation_DataTable_Title_QA_Status']}">#{article.col4}</p:column>
+								<p:column headerText="#{languageLabel['CREATE_ARTICLE_Mass_Creation_DataTable_Title_Action']}">
+									<h:commandButton class="main_left_button" value="#{languageLabel['CREATE_ARTICLE_Mass_Creation_Button_Title_View_details']}"
+										action="#{ContectBean.doNav}"
+										styleClass="myButton h_green_button">
+										<f:param name="page" value="/pages/CreateArticleDetail.xhtml" />
+										<f:param name="pageName" value="Create Article" />
+									</h:commandButton>
+								</p:column>
+							</p:dataTable>
+						</f:ajax>
+					</h:form>
+				</div>
+
+
+			</p:layoutUnit>
+		</p:layout>
+
+	</div>
+
+</ui:composition>

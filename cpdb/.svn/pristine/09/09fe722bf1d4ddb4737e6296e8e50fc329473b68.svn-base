@@ -1,0 +1,48 @@
+package hk.ed.cpdb.bean.dto;
+
+import hk.ed.cpdb.entitytemp.DefineDataField;
+
+public class DefineTabDto {
+
+	public DefineTabDto() {
+		super();
+	}
+
+	public DefineTabDto(Integer index, DefineDataField defineDataField, String title) {
+		super();
+		setIndex(index);
+		setDefineDataField(defineDataField);
+		setTitle(title);
+	}
+
+	private Integer index;
+
+	private DefineDataField defineDataField;
+
+	private String Title;
+
+	public Integer getIndex() {
+		return index;
+	}
+
+	public void setIndex(Integer index) {
+		this.index = index;
+	}
+
+	public DefineDataField getDefineDataField() {
+		return defineDataField;
+	}
+
+	public void setDefineDataField(DefineDataField defineDataField) {
+		this.defineDataField = defineDataField;
+	}
+
+	public String getTitle() {
+		return Title;
+	}
+
+	public void setTitle(String title) {
+		Title = title;
+	}
+
+}

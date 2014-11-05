@@ -1,0 +1,67 @@
+package hk.ed.cpdb.bean;
+
+import hk.ed.cpdb.entitytemp.AuthenticationLog;
+import hk.ed.cpdb.entitytemp.SystemLog;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+@ApplicationScoped
+public class AuthenticationLogBean {
+
+	private List<AuthenticationLog> authenticationLogs = new ArrayList<AuthenticationLog>();
+	
+	private FilterBean filterBean = new FilterBean("authenticationLogBean",new AuthenticationLog());
+
+	public List<AuthenticationLog> getAuthenticationLogs() {
+		// init();
+		authenticationLogs = new ArrayList<AuthenticationLog>();
+		AuthenticationLog systemLog1 = new AuthenticationLog(1, 2, "Success", "In", "Out", new Date());
+		AuthenticationLog systemLog2 = new AuthenticationLog(2, 2, "Success", "In", "Out", new Date());
+		AuthenticationLog systemLog3 = new AuthenticationLog(3, 2, "Success", "In", "Out", new Date());
+		AuthenticationLog systemLog4 = new AuthenticationLog(4, 2, "Success", "In", "Out", new Date());
+		AuthenticationLog systemLog5 = new AuthenticationLog(5, 2, "Success", "In", "Out", new Date());
+		AuthenticationLog systemLog6 = new AuthenticationLog(6, 2, "Success", "In", "Out", new Date());
+		AuthenticationLog systemLog7 = new AuthenticationLog(7, 2, "Success", "In", "Out", new Date());
+		AuthenticationLog systemLog8 = new AuthenticationLog(8, 2, "Success", "In", "Out", new Date());
+		AuthenticationLog systemLog9 = new AuthenticationLog(9, 2, "Success", "In", "Out", new Date());
+		AuthenticationLog systemLog10 = new AuthenticationLog(10, 2, "Success", "In", "Out", new Date());
+
+		authenticationLogs.add(systemLog1);
+		authenticationLogs.add(systemLog2);
+		authenticationLogs.add(systemLog3);
+		authenticationLogs.add(systemLog4);
+		authenticationLogs.add(systemLog5);
+		authenticationLogs.add(systemLog6);
+		authenticationLogs.add(systemLog7);
+		authenticationLogs.add(systemLog8);
+		authenticationLogs.add(systemLog9);
+		authenticationLogs.add(systemLog10);
+
+		return authenticationLogs;
+	}
+
+	public void setAuthenticationLogs(List<AuthenticationLog> authenticationLogs) {
+		this.authenticationLogs = authenticationLogs;
+	}
+
+	public void setSystemLogs(List<AuthenticationLog> systemLogs) {
+		this.authenticationLogs = systemLogs;
+	}
+
+	public FilterBean getFilterBean() {
+		return filterBean;
+	}
+
+	public void setFilterBean(FilterBean filterBean) {
+		this.filterBean = filterBean;
+	}
+	
+	
+
+}

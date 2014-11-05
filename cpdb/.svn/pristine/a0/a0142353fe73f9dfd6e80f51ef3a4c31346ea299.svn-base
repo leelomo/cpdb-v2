@@ -1,0 +1,117 @@
+
+package hk.ed.cpdb.bean;
+
+import hk.ed.cpdb.dto.FilterDto;
+import hk.ed.cpdb.entitytemp.Temp;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+import org.springframework.stereotype.Component;
+
+@SuppressWarnings("serial")
+@Component
+@ManagedBean(name = "reportBean")
+@ViewScoped
+public class ReportBean {
+	private List<Temp> articleList;
+
+	private Boolean showTable;
+
+//	private List<String> filterFields;
+//
+//	private List<FilterDto> filterList = new ArrayList<FilterDto>();
+	
+	private FilterBean filterBean = new FilterBean(new Temp());
+
+	@PostConstruct
+	public void init(){
+
+
+		showTable = false;
+
+		List<Temp> articleList = new ArrayList<Temp>();
+		for (int i = 0; i < 10; i++) {
+			articleList.add(new Temp(i + "", i + "col1", i + "col2", i + "col3", i + "col4"));
+		}
+
+		setArticleList(articleList);
+
+	}
+
+
+
+	public void doShowTable(){
+		showTable = true;
+	}
+
+	public List<Temp> getArticleList(){
+		return articleList;
+	}
+
+	public void setArticleList(List<Temp> articleList){
+		this.articleList = articleList;
+	}
+
+	public Boolean getShowTable(){
+		return showTable;
+	}
+
+	public void setShowTable(Boolean showTable){
+		this.showTable = showTable;
+	}
+	
+//	private void getFilterFieldCols(Object o){
+//		Field[] fs = o.getClass().getDeclaredFields();
+//		filterFields = new ArrayList<String>();
+//		for (Field f : fs) {
+//			filterFields.add(f.getName());
+//			System.out.println(f.getName());
+//		}
+//	}
+//
+//	public void addFilterRow(){
+//		System.out.println("add row");
+//		filterList.add(new FilterDto());
+//	}
+//
+//	public void deleteFilterRow(FilterDto filterDto){
+//		System.out.println("del row");
+//		filterList.remove(filterDto);
+//	}
+//
+//	public void clearEditTab(){
+//		System.out.println("cls row");
+//		filterList.clear();
+//	}
+//
+//	public List<String> getFilterFields(){
+//		return filterFields;
+//	}
+//
+//	public void setFilterFields(List<String> filterFields){
+//		this.filterFields = filterFields;
+//	}
+//
+//	public List<FilterDto> getFilterList(){
+//		return filterList;
+//	}
+//
+//	public void setFilterList(List<FilterDto> filterList){
+//		this.filterList = filterList;
+//	}
+
+	public FilterBean getFilterBean(){
+		return filterBean;
+	}
+
+	public void setFilterBean(FilterBean filterBean){
+		this.filterBean = filterBean;
+	}
+
+}

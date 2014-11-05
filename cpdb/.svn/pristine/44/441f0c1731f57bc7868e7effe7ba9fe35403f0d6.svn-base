@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+>
+
+	<div align="center" class="bg-red">
+
+		<p:tabView>
+			<p:tab title="Download">
+				<h:panelGrid columns="2" cellpadding="10">
+					<h:panelGrid style="width:600px;">
+						<ui:insert name="filter">
+							<ui:include src="http://localhost:8080/cpdb/base/Filter.xhtml" />
+						</ui:insert>
+					</h:panelGrid>
+				</h:panelGrid>
+				<p:separator />
+
+				<p:dataTable id="withCommand" var="article" value="#{createArticleQABean.articleList}" rowKey="#{article.id}" selection="#{createArticleQABean.selections}">
+					<p:column selectionMode="multiple" style="width:16px;text-align:center" />
+					<p:column headerText="id">#{article.id}</p:column>
+					<p:column headerText="col1">#{article.col1}</p:column>
+					<p:column headerText="col2">#{article.col2}</p:column>
+					<p:column headerText="col3">#{article.col3}</p:column>
+					<p:column headerText="col4">#{article.col4}</p:column>
+				</p:dataTable>
+
+				<p:separator />
+
+				<h:commandButton class="main_left_button" value="Text">
+				</h:commandButton>
+			</p:tab>
+
+			<p:tab title="Upload">
+				<h:panelGrid columns="2" cellpadding="10">
+
+					<div align="center" style="border: 0x solid black; margin-top: 5%; margin-left: 30%; margin-right: 30%">
+						<div align="center">
+
+							<h:panelGrid style="  border-collapse: collapse;
+			 border:1px solid black;margin-top: 10%;">
+
+								<h:form id="form">
+
+
+									<h:panelGrid id="grid" columns="2" cellpadding="5">
+
+										<h:outputText value="Choose Article Template " />
+										<p:fileUpload value="#{createArticleBean.file}" mode="simple" />
+
+										<h:commandButton value="Validate Article Template" ajax="false" />
+									</h:panelGrid>
+
+
+								</h:form>
+							</h:panelGrid>
+
+						</div>
+					</div>
+
+				</h:panelGrid>
+			</p:tab>
+
+		</p:tabView>
+	</div>
+</ui:composition>

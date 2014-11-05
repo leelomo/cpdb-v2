@@ -1,0 +1,31 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+>
+
+	<div align="center">
+		<h1>Element Template</h1>
+	</div>
+	<div>
+		<h:commandButton id="fsfaaass" value="h:command button" />
+		<h:commandButton id="h_command_button_green" value="h:command button" action="#{GlobalBean.doLogin()}" styleClass="h_green_button" />
+		<h:commandButton id="h_command_button_red" value="h:command button" action="#{GlobalBean.doLogin()}" styleClass="h_red_button" />
+	</div>
+	<br />
+
+
+	<div>
+		<p:commandButton id="fsdfsa" value="p:command button"></p:commandButton>
+		<p:commandButton id="fsdfs8522a" value="p:command button" styleClass="p_green_button"></p:commandButton>
+		<p:commandButton id="fsd43dfsa" value="p:command button" styleClass="p_red_button"></p:commandButton>
+	</div>
+
+	<br />
+	<div>
+		<p:fieldset legend="fieldset" styleClass="custom_fieldset">
+	Content Content Content Content
+	</p:fieldset>
+	</div>
+
+
+
+</ui:composition>

@@ -1,0 +1,23 @@
+
+package hk.ed.cpdb.bean;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+
+@ManagedBean(name = "testBean")
+public class TestBean {
+	
+	@ManagedProperty(value = "tagLine")
+	private String tagLine;
+
+	public String getTagLine(){
+		return tagLine;
+	}
+
+	public void setTagLine(String tagLine){
+		this.tagLine = tagLine;
+	}
+	
+	
+
+}

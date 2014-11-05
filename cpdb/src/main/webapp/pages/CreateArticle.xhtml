@@ -1,0 +1,77 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "htth://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>#{GlobalBean.title}</title>
+
+	<link type="text/css" rel="stylesheet" href="#{GlobalBean.cssMainPath}" />
+
+
+</h:head>
+<h:body>
+	<h:form>
+		<f:ajax render=":layoutMain" execute="@this">
+			<div align="center"
+				style="border: 0x solid black; margin-top: 5%; margin-left: 30%; margin-right: 30%">
+				<div align="center">
+
+					<h:panelGrid
+						style="  border-collapse: collapse;
+			margin-top: 10%;font-size:1.3em;">
+
+						<h:form id="form">
+
+
+							<h:panelGrid id="grid" columns="3" cellpadding="5">
+								<h:form prependId="false">
+
+
+									<p:fieldset legend="#{languageLabel['CREATE_ARTICLE_DataTable_Title_Select_Option']}"
+										style="margin-bottom:20px;border:1px solid black;">
+										<h:panelGrid columns="1" cellpadding="10">
+
+											<h:commandButton styleClass="myButton h_green_button"
+												value="#{languageLabel['CREATE_ARTICLE_Button_Title_Single_Creation']}" style="width:300px;"
+												action="#{ContectBean.doNav}">
+												<f:param name="page"
+													value="/pages/CreateArticleSingle.xhtml" />
+												<f:param name="pageName"
+													value="#{languageLabel['MENU_Label_Create_Article']} > #{languageLabel['MENU_Label_Single_creation']}" />
+											</h:commandButton>
+
+
+											<h:commandButton value="#{languageLabel['CREATE_ARTICLE_Button_Title_Mass_Creation']}" style="width:300px"
+												action="#{ContectBean.doNav}"
+												styleClass="myButton h_green_button">
+												<f:param name="page" value="/pages/CreateArticleMass.xhtml" />
+												<f:param name="pageName"
+													value="#{languageLabel['MENU_Label_Create_Article']} > #{languageLabel['MENU_Label_Mass_creation']}" />
+											</h:commandButton>
+
+											<h:commandButton value="#{languageLabel['CREATE_ARTICLE_Button_Title_QA_import']}"
+												style="margin-bottom:5%;width:300px"
+												action="#{ContectBean.doNav}"
+												styleClass="myButton h_green_button">
+												<f:param name="page" value="/pages/CreateArticleQA.xhtml" />
+												<f:param name="pageName" value="#{languageLabel['MENU_Label_Create_Article']} > #{languageLabel['MENU_Label_QA_input']}" />
+											</h:commandButton>
+
+
+										</h:panelGrid>
+									</p:fieldset>
+								</h:form>
+							</h:panelGrid>
+
+						</h:form>
+					</h:panelGrid>
+
+				</div>
+			</div>
+		</f:ajax>
+	</h:form>
+</h:body>
+</html>

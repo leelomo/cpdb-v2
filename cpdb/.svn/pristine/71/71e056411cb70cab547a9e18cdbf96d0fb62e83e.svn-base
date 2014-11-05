@@ -1,0 +1,5 @@
+cssMainPath=/cpdb/css/Main.css
+headerPath=base/Header.xhtml
+footerPath=base/Footer.xhtml
+contectPath=base/Contect.xhtml
+title=Centralized Product DataBase

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "htth://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>#{GlobalBean.title}</title>
+
+	<link type="text/css" rel="stylesheet" href="#{GlobalBean.cssMainPath}" />
+
+</h:head>
+<h:body>
+
+	<div align="center" style="margin-top: 20%;">
+<h:panelGrid style="background-color:#2E8A2E;border:1px solid black;">
+
+		<h:form id="form">
+
+			<h:outputLabel value="Centralized Product Database" style="font-weight:bold;font-size:2em;" />
+			<h:panelGrid id="grid" columns="3" cellpadding="5">
+				<h:outputLabel for="name" value="AD user name" style="font-weight:bold" />
+				<p:inputText id="name" value="#{loginBean.loginName}" required="true" label="Name" />
+				<p:message for="name" />
+
+				<h:outputLabel for="password" value="AD Password" style="font-weight:bold" />
+				<p:password id="password" value="#{loginBean.loginPassword}" required="true" label="Password" />
+				<p:message for="password" />
+
+			</h:panelGrid>
+			<h:panelGrid  columns="2" >
+			<h:commandButton id="btnLogin" value="Submit" action="#{GlobalBean.doLogin()}" />
+			<h:commandButton  value="Cancel" />
+			</h:panelGrid>
+			<br />
+			<h3>
+				<h:outputText id="display" value="#{loginBean.errormsg}" />
+			</h3>
+		</h:form>
+</h:panelGrid>
+
+	</div>
+
+
+</h:body>
+</html>

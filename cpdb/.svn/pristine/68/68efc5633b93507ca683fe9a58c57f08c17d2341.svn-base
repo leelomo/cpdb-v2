@@ -1,0 +1,30 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+>
+
+
+	<div align="center">
+
+		<h:form>
+			<h:commandButton value="Define data fields" action="#{ContectBean.doNav}">
+				<f:param name="page" value="/pages/DefinitionDataFields.xhtml" />
+				<f:param name="pageName" value="Define data fields" />
+			</h:commandButton>
+			<br />
+			<h:commandButton value="Define Product Template" action="#{ContectBean.doNav}">
+				<f:param name="page" value="/pages/DefinitionProductTemplate.xhtml" />
+				<f:param name="pageName" value="Define Product Template" />
+			</h:commandButton>
+			<br />
+			<h:commandButton value="Define master data" action="#{ContectBean.doNav}">
+				<f:param name="page" value="/pages/DefinitionMasterData.xhtml" />
+				<f:param name="pageName" value="Define master data" />
+			</h:commandButton>
+			<br />
+		</h:form>
+	</div>
+</ui:composition>

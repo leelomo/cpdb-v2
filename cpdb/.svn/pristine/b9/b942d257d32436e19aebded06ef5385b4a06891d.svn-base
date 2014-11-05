@@ -1,0 +1,67 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "htth://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>#{GlobalBean.title}</title>
+
+	<link type="text/css" rel="stylesheet" href="#{GlobalBean.cssMainPath}" />
+
+
+</h:head>
+<h:body>
+	<f:ajax render=":layoutMain" execute="@this">
+		<div align="center" style="border: 0x solid black; margin-top: 5%; margin-left: 30%; margin-right: 30%">
+			<div align="center">
+
+				<h:panelGrid style="  border-collapse: collapse;
+			margin-top: 10%;font-size:1.3em;">
+					<h:panelGrid id="grid" columns="3" cellpadding="5">
+						<h:form prependId="false">
+
+							<p:fieldset legend="Download" style="margin-bottom:20px;border:1px solid black;">
+								<h:panelGrid columns="2" cellpadding="10">
+
+									<p:outputLabel value="Select Article Template"></p:outputLabel>
+									<h:selectOneMenu id="console">
+										<f:selectItem itemLabel="" itemValue="" />
+										<f:selectItem itemLabel="Template 1" itemValue="Template 1" />
+										<f:selectItem itemLabel="Template 2" itemValue="Template 2" />
+										<f:selectItem itemLabel="Template 3" itemValue="Template 3" />
+									</h:selectOneMenu>
+
+
+									<h:commandButton value="Download Article Template" style="margin-bottom:5%;width:300px">
+									</h:commandButton>
+
+
+
+								</h:panelGrid>
+							</p:fieldset>
+
+							<p:fieldset legend="Validate" style="margin-bottom:20px;border:1px solid black;">
+								<h:panelGrid columns="2" cellpadding="10">
+									<h:outputText value="Choose Article Template " />
+									<p:fileUpload mode="simple" />
+									<h:commandButton value="Validate Article Templaten" action="#{ContectBean.doNav}" style="margin-bottom:5%;width:300px">
+										<f:param name="page" value="/pages/CreateArticleMassVal.xhtml" />
+										<f:param name="pageName" value=" Mass Creation" />
+									</h:commandButton>
+
+
+
+								</h:panelGrid>
+							</p:fieldset>
+
+						</h:form>
+					</h:panelGrid>
+				</h:panelGrid>
+
+			</div>
+		</div>
+	</f:ajax>
+</h:body>
+</html>

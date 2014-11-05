@@ -1,0 +1,59 @@
+package hk.ed.cpdb.bean;
+
+import hk.ed.cpdb.entitytemp.Worklist;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+@ApplicationScoped
+public class WorklistBean {
+
+	private List<Worklist> worklists = new ArrayList<Worklist>();
+
+	public List<Worklist> getWorklists() {
+		// init();
+		worklists = new ArrayList<Worklist>();
+		Worklist worklist = new Worklist(1, "Process Type", "Market", 1, "dept A", "desc", 1, 1, "process Status", new Date(), "Apple", new Date(),
+				"Ben", "natApprover");
+		Worklist worklist2 = new Worklist(2, "Process Type", "Market", 1, "dept B", "desc", 1, 1, "process Status", new Date(), "Apple", new Date(),
+				"Ben", "natApprover");
+		Worklist worklist3 = new Worklist(3, "Process Type", "Market", 1, "dept C", "desc", 1, 1, "process Status",new Date(), "Apple", new Date(),
+				"Ben", "natApprover");
+		Worklist worklist4 = new Worklist(4, "Process Type", "Market", 1, "dept D", "desc", 1, 1, "process Status", new Date(), "Apple", new Date(),
+				"Ben", "natApprover");
+		Worklist worklist5 = new Worklist(5, "Process Type", "Market", 1, "dept E", "desc", 1, 1, "process Status", new Date(), "Apple", new Date(),
+				"Ben", "natApprover");
+		Worklist worklist6 = new Worklist(6, "Process Type", "Market", 1, "dept F", "desc", 1, 1, "process Status", new Date(), "Apple", new Date(),
+				"Ben", "natApprover");
+		Worklist worklist7 = new Worklist(7, "Process Type", "Market", 1, "dept G", "desc", 1, 1, "process Status", new Date(), "Apple", new Date(),
+				"Ben", "natApprover");
+		Worklist worklist8 = new Worklist(8, "Process Type", "Market", 1, "dept H", "desc", 1, 1, "process Status", new Date(), "Apple",new Date(),
+				"Ben", "natApprover");
+		Worklist worklist9 = new Worklist(9, "Process Type", "Market", 1, "dept I", "desc", 1, 1, "process Status", new Date(), "Apple", new Date(),
+				"Ben", "natApprover");
+		Worklist worklist10 = new Worklist(10, "Process Type", "Market", 1, "dept K", "desc", 1, 1, "process Status",new Date(), "Apple", new Date(),
+				"Ben", "natApprover");
+		worklists.add(worklist);
+		worklists.add(worklist2);
+		worklists.add(worklist3);
+		worklists.add(worklist4);
+		worklists.add(worklist5);
+		worklists.add(worklist6);
+		worklists.add(worklist7);
+		worklists.add(worklist8);
+		worklists.add(worklist9);
+		worklists.add(worklist10);
+		System.out.println("kjfhkjgfhghj");
+		return worklists;
+	}
+
+	public void setWorklists(List<Worklist> worklists) {
+		this.worklists = worklists;
+	}
+
+}

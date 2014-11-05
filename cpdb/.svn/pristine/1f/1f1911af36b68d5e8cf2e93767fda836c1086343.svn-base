@@ -1,0 +1,163 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core"
+>
+
+	<div align="center">
+		<p:tabView id="tabview">
+
+			<p:tab title="Main">
+				<h:panelGrid columns="1" cellpadding="10">
+					<h:form>
+						<h:form id="formId">
+		<p:dataTable var="dtoBean" value="#{selectOneMenuView.listDtoBean}"
+			id="testTable">
+			<p:column headerText="Data Field">
+				<h:outputText value="#{dtoBean.string}" />
+			</p:column>
+
+			<p:column headerText="Opeater">
+				<h:outputText value="#{dtoBean.string2}" />
+			</p:column>
+
+			<p:column headerText="Value">
+				<h:outputText value="#{dtoBean.string3}" />
+			</p:column>
+			<p:column headerText="Action">
+				<p:commandButton value="Delete" 
+					actionListener="#{selectOneMenuView.deleteEditTab(dtoBean)}" update="testTable" />
+			</p:column>
+
+
+		</p:dataTable>
+
+		<h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="5">
+			<p:commandButton value="+" id="ajax"
+				actionListener="#{selectOneMenuView.addEditTab}" update="testTable" />
+			<h:selectOneMenu id="menuId" value="#{selectOneMenuView.city}">
+				<f:selectItem itemLabel="Select One" itemValue="" />
+				<f:selectItems value="#{selectOneMenuView.cities}" />
+			</h:selectOneMenu>
+
+
+			<h:selectOneMenu id="menuId2" value="#{selectOneMenuView.console}">
+				<f:selectItem itemLabel="Select One" itemValue="" />
+				<f:selectItem itemLabel="Equal" itemValue="Equal" />
+				<f:selectItem itemLabel="Not equal" itemValue="Not equal" />
+				<f:selectItem itemLabel="Smaller than" itemValue="Smaller Than" />
+				<f:selectItem itemLabel="Bigger than" itemValue="Bigger Than" />
+				<f:selectItem itemLabel="Like" itemValue="Like" />
+			</h:selectOneMenu>
+
+			<h:inputText value="C" id="textC" />
+
+			<p:commandButton value="Filter" />
+			<p:commandButton value="Clear" update="testTable"
+				actionListener="#{selectOneMenuView.clearEditTab}" />
+
+		</h:panelGrid>
+
+
+	</h:form>
+					</h:form>
+					<p:separator></p:separator>
+
+					<p:dataTable var="masterData" value="#{defineMasterDataBean.masterDatas}">
+						<p:column headerText="Maste Data Key">
+							<h:outputText value="#{masterData.MDKey}" />
+						</p:column>
+
+						<p:column headerText="Master Data Name">
+							<h:outputText value="#{masterData.MDName}" />
+						</p:column>
+
+
+						<p:column headerText="Type">
+							<h:outputText value="#{masterData.type}" />
+						</p:column>
+						<p:column headerText="Description">
+							<h:outputText value="#{masterData.desc}" />
+						</p:column>
+
+						<p:column headerText="Create On">
+							<h:outputText value="#{masterData.createOn}" />
+						</p:column>
+						<p:column headerText="Create By">
+							<h:outputText value="#{masterData.createBy}" />
+						</p:column>
+
+						<p:column headerText="Modified On">
+							<h:outputText value="#{masterData.modifiedOn}" />
+						</p:column>
+						<p:column headerText="Modified By">
+							<h:outputText value="#{masterData.modifiedBy}" />
+						</p:column>
+
+						<p:column headerText="">
+							<h:commandButton update=":tabview" value="Edit" actionListener="#{defineMasterDataBean.addEditTab}">
+								<f:param name="id" value="0" />
+								<f:param name="name" value="#{masterData.MDName}" />
+								<f:param name="desc" value="#{masterData.desc}" />
+							</h:commandButton>
+						</p:column>
+					</p:dataTable>
+				</h:panelGrid>
+
+			</p:tab>
+			<c:forEach items="#{defineMasterDataBean.dtoList}" var="dto">
+				<p:tab title="Master Data A">
+					<h:panelGrid columns="1" cellpadding="10">
+						<h:form>
+							<h:commandButton update=":tabview" value="Close" action="#{defineMasterDataBean.onEditTabClose}">
+								<f:param name="index" value="#{dto.index}" />
+							</h:commandButton>
+						</h:form>
+
+						<p:dataTable var="masterData" value="#{defineMasterDataBean.masterDatas}">
+							<p:column headerText="Key">
+								<h:outputText value="#{masterData.MDKey}" />
+							</p:column>
+
+							<p:column headerText="Value">
+								<h:outputText value="#{masterData.MDName}" />
+							</p:column>
+
+
+							<p:column headerText="Display value">
+								<h:outputText value="#{masterData.MDName}" />
+							</p:column>
+
+
+
+
+							<p:column headerText="">
+								<p:commandButton value="Delete">
+									<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+								</p:commandButton>
+							</p:column>
+						</p:dataTable>
+
+
+					</h:panelGrid>
+					<h:panelGrid columns="3" cellpadding="10">
+						<p:commandButton value="Add">
+							<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+						</p:commandButton>
+						<p:commandButton value="Save">
+							<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+						</p:commandButton>
+						<p:commandButton value="Cancel">
+							<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+						</p:commandButton>
+
+
+					</h:panelGrid>
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+						<p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+						<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</p:confirmDialog>
+				</p:tab>
+			</c:forEach>
+		</p:tabView>
+	</div>
+
+</ui:composition>

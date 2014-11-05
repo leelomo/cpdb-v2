@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:panelGrid columns="1">
+		<h:panelGrid>
+			<ui:insert name="filter" style="border-style:solid; border-width:1px">
+				<ui:include src="#{GlobalBean.filterPath}">
+					<ui:param name="filterBean"
+						value="#{authenticationLogBean.filterBean}" />
+				</ui:include>
+			</ui:insert>
+		</h:panelGrid>
+		<p:separator></p:separator>
+		<h:form>
+			<p:dataTable var="authenticationLog"
+				value="#{authenticationLogBean.authenticationLogs}">
+				<p:column
+					headerText="#{languageLabel['AUDIT_TRAIL_Authentication_Log_DataTable_Title_User_ID']}">
+					<h:outputText value="#{authenticationLog.userID}" />
+				</p:column>
+
+				<p:column
+					headerText="#{languageLabel['AUDIT_TRAIL_Authentication_Log_DataTable_Title_Login_Attempt_Time']}">
+					<h:outputText value="#{authenticationLog.loginAttemptTime}" />
+				</p:column>
+
+				<p:column
+					headerText="#{languageLabel['AUDIT_TRAIL_Authentication_Log_DataTable_Title_Login_Result']}">
+					<h:outputText value="#{authenticationLog.loginResult}" />
+				</p:column>
+
+				<p:column
+					headerText="#{languageLabel['AUDIT_TRAIL_Authentication_Log_DataTable_Title_Session_In']}">
+					<h:outputText value="#{authenticationLog.sessionIn}" />
+				</p:column>
+				<p:column
+					headerText="#{languageLabel['AUDIT_TRAIL_Authentication_Log_DataTable_Title_Session_Out']}">
+					<h:outputText value="#{authenticationLog.sessionOut}" />
+				</p:column>
+				<p:column
+					headerText="#{languageLabel['AUDIT_TRAIL_Authentication_Log_DataTable_Title_Logout_Time']}">
+					<h:outputText value="#{authenticationLog.logoutTime}" />
+				</p:column>
+			</p:dataTable>
+			<p:commandButton
+				value="#{languageLabel['AUDIT_TRAIL_Authentication_Log_P_Btn_Export']}"
+				ajax="false">
+				<p:fileDownload value="#{createArticleBean.downloadFile}" />
+			</p:commandButton>
+		</h:form>
+	</h:panelGrid>
+
+</ui:composition>

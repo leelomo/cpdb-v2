@@ -1,0 +1,136 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<div align="left">
+		<f:ajax render=":layoutMain" execute="@this">
+			<p:tabView id="tabview">
+
+				<p:tab title="#{languageLabel['PRODUCT_DEFINITON_Define_master_data_Page_Title_Main']}">
+					<h:panelGrid columns="1" cellpadding="10">
+						<h:panelGrid>
+							<ui:insert name="filter"
+								style="border-style:solid; border-width:1px">
+								<ui:include src="#{GlobalBean.filterPath}">
+									<ui:param name="filterBean"
+										value="#{defineMasterDataBean.filterBean}" />
+								</ui:include>
+							</ui:insert>
+						</h:panelGrid>
+					</h:panelGrid>
+					<p:separator></p:separator>
+
+					<p:dataTable var="masterData"
+						value="#{defineMasterDataBean.masterDatas}">
+						<p:column headerText="#{languageLabel['PRODUCT_DEFINITON_Define_master_data_DataTable_Title_Master_Data_Key']}">
+							<h:outputText value="#{masterData.MDKey}" />
+						</p:column>
+
+						<p:column headerText="#{languageLabel['PRODUCT_DEFINITON_Define_master_data_DataTable_Title_Master_Data_Name']}">
+							<h:outputText value="#{masterData.MDName}" />
+						</p:column>
+
+
+						<p:column headerText="#{languageLabel['PRODUCT_DEFINITON_Define_master_data_DataTable_Title_Type']}">
+							<h:outputText value="#{masterData.type}" />
+						</p:column>
+						<p:column headerText="#{languageLabel['PRODUCT_DEFINITON_Define_master_data_DataTable_Title_Description']}">
+							<h:outputText value="#{masterData.desc}" />
+						</p:column>
+
+						<p:column headerText="#{languageLabel['PRODUCT_DEFINITON_Define_master_data_DataTable_Title_Create_On']}">
+							<h:outputText value="#{masterData.createOn}" />
+						</p:column>
+						<p:column headerText="#{languageLabel['PRODUCT_DEFINITON_Define_master_data_DataTable_Title_Create_By']}">
+							<h:outputText value="#{masterData.createBy}" />
+						</p:column>
+
+						<p:column headerText="#{languageLabel['PRODUCT_DEFINITON_Define_master_data_DataTable_Title_Modified_On']}">
+							<h:outputText value="#{masterData.modifiedOn}" />
+						</p:column>
+						<p:column headerText="#{languageLabel['PRODUCT_DEFINITON_Define_master_data_DataTable_Title_Modified_By']}">
+							<h:outputText value="#{masterData.modifiedBy}" />
+						</p:column>
+
+						<p:column headerText="">
+							<h:commandButton update=":tabview" value="Edit"
+								actionListener="#{defineMasterDataBean.addEditTab}">
+								<f:param name="id" value="0" />
+								<f:param name="name" value="#{masterData.MDName}" />
+								<f:param name="desc" value="#{masterData.desc}" />
+							</h:commandButton>
+						</p:column>
+					</p:dataTable>
+
+				</p:tab>
+				<c:forEach items="#{defineMasterDataBean.dtoList}" var="dto">
+					<p:tab title="Master Data A">
+						<h:panelGrid columns="1" cellpadding="10">
+							<h:form>
+								<h:commandButton update=":tabview" value="Close"
+									action="#{defineMasterDataBean.onEditTabClose}">
+									<f:param name="index" value="#{dto.index}" />
+								</h:commandButton>
+							</h:form>
+
+							<p:dataTable var="masterData"
+								value="#{defineMasterDataBean.masterDatas}">
+								<p:column headerText="Key">
+									<h:outputText value="#{masterData.MDKey}" />
+								</p:column>
+
+								<p:column headerText="Value">
+									<h:outputText value="#{masterData.MDName}" />
+								</p:column>
+
+
+								<p:column headerText="Display value">
+									<h:outputText value="#{masterData.MDName}" />
+								</p:column>
+
+
+
+
+								<p:column headerText="">
+									<p:commandButton value="Delete">
+										<p:confirm header="Confirmation" message="Are you sure?"
+											icon="ui-icon-alert" />
+									</p:commandButton>
+								</p:column>
+							</p:dataTable>
+
+
+						</h:panelGrid>
+						<h:panelGrid columns="3" cellpadding="10">
+							<p:commandButton value="Add">
+								<p:confirm header="Confirmation" message="Are you sure?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+							<p:commandButton value="Save">
+								<p:confirm header="Confirmation" message="Are you sure?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+							<p:commandButton value="Cancel">
+								<p:confirm header="Confirmation" message="Are you sure?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+
+
+						</h:panelGrid>
+						<p:confirmDialog global="true" showEffect="fade"
+							hideEffect="explode">
+							<p:commandButton value="Yes" type="button"
+								styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+							<p:commandButton value="No" type="button"
+								styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+						</p:confirmDialog>
+					</p:tab>
+				</c:forEach>
+			</p:tabView>
+		</f:ajax>
+	</div>
+
+</ui:composition>

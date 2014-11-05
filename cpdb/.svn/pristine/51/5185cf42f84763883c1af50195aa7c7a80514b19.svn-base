@@ -1,0 +1,96 @@
+package hk.ed.cpdb.entitytemp;
+
+import java.util.Date;
+
+public class DefineMasterData {
+
+	private int MDKey;
+	private String MDName;
+	private String type;
+	private String desc;
+	private Date createOn;
+	private String createBy;
+	private Date modifiedOn;
+	private String modifiedBy;
+	
+	public DefineMasterData() {
+		super();
+	}
+
+	public DefineMasterData(int mDKey, String mDName, String type, String desc, Date createOn, String createBy, Date modifiedOn, String modifiedBy) {
+		super();
+		MDKey = mDKey;
+		MDName = mDName;
+		this.type = type;
+		this.desc = desc;
+		this.createOn = createOn;
+		this.createBy = createBy;
+		this.modifiedOn = modifiedOn;
+		this.modifiedBy = modifiedBy;
+	}
+
+	public int getMDKey() {
+		return MDKey;
+	}
+
+	public void setMDKey(int mDKey) {
+		MDKey = mDKey;
+	}
+
+	public String getMDName() {
+		return MDName;
+	}
+
+	public void setMDName(String mDName) {
+		MDName = mDName;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+
+	public Date getCreateOn() {
+		return createOn;
+	}
+
+	public void setCreateOn(Date createOn) {
+		this.createOn = createOn;
+	}
+
+	public String getCreateBy() {
+		return createBy;
+	}
+
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
+
+	public Date getModifiedOn() {
+		return modifiedOn;
+	}
+
+	public void setModifiedOn(Date modifiedOn) {
+		this.modifiedOn = modifiedOn;
+	}
+
+	public String getModifiedBy() {
+		return modifiedBy;
+	}
+
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+
+}

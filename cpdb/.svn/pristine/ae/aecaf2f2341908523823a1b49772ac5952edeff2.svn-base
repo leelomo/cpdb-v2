@@ -1,0 +1,149 @@
+
+package hk.ed.cpdb.bean;
+
+import hk.ed.cpdb.entitytemp.Temp;
+
+import java.io.InputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
+import org.primefaces.model.UploadedFile;
+import org.springframework.stereotype.Component;
+
+@SuppressWarnings("serial")
+@Component
+@ManagedBean(name = "createArticleMassValBean")
+public class CreateArticleMassValBean implements Serializable {
+
+	private List<Temp> massCreation = new ArrayList<Temp>();
+
+	private UploadedFile file;
+
+	private StreamedContent downloadFile;
+
+	private String selection;
+
+	private UIComponent messages;
+
+	private UIComponent messages2;
+
+	private UIComponent messages3;
+
+	@PostConstruct
+	public void init(){
+		massCreation.add(new Temp(1 + "", "Sample Article 1", "Pass", "0", ""));
+		massCreation.add(new Temp(2 + "", "Sample Article 2", "Fail", "4", ""));
+		massCreation.add(new Temp(3 + "", "Sample Article 3", "Pass", "0", ""));
+		massCreation.add(new Temp(4 + "", "Sample Article 4", "Pass", "0", ""));
+		massCreation.add(new Temp(5 + "", "Sample Article 5", "Pass", "0", ""));
+		massCreation.add(new Temp(6 + "", "Sample Article 6", "Fail", "37", ""));
+		massCreation.add(new Temp(7 + "", "Sample Article 7", "Pass", "0", ""));
+		massCreation.add(new Temp(8 + "", "Sample Article 8", "Fail", "16", ""));
+		massCreation.add(new Temp(9 + "", "Sample Article 9", "Pass", "0", ""));
+
+	}
+
+	public List<Temp> getMassCreation(){
+		return massCreation;
+	}
+
+	public String getInlineCss(String value){
+		String cssStr = "background-color: ";
+		if (value.equalsIgnoreCase("Pass")) {
+			cssStr += "green;";
+		} else {
+			cssStr += "red;";
+		}
+		cssStr += "color : white;";
+
+		return cssStr;
+	}
+
+	public void setMassCreation(List<Temp> massCreation){
+		this.massCreation = massCreation;
+	}
+
+	public CreateArticleMassValBean(){
+		InputStream stream = this.getClass().getResourceAsStream("/PFSamplePDF.pdf");
+		downloadFile = new DefaultStreamedContent(stream, "application/xls", "PFSample.xls");
+	}
+
+	public UIComponent getMessages(){
+		return messages;
+	}
+
+	public void setMessages(UIComponent messages){
+		this.messages = messages;
+	}
+
+	public UIComponent getMessages2(){
+		return messages2;
+	}
+
+	public void setMessages2(UIComponent messages2){
+		this.messages2 = messages2;
+	}
+
+	public UIComponent getMessages3(){
+		return messages3;
+	}
+
+	public void setMessages3(UIComponent messages3){
+		this.messages3 = messages3;
+	}
+
+	public void info(){
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "File Format Validation Passed"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "File Content Syntax Validation Passed"));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Warning!", "Article Data Content Validation - Partially Passed(4/9)"));
+	}
+
+	public void info2(){
+	}
+
+	public void warn(){
+
+	}
+
+	public UploadedFile getFile(){
+		return file;
+	}
+
+	public void setFile(UploadedFile file){
+		this.file = file;
+	}
+
+	public void handleFileUpload(FileUploadEvent event){
+		UploadedFile file = event.getFile();
+		// MessageUtil.addInfoMessage("upload.successful", file.getFileName() +
+		// " is uploaded.");
+	}
+
+	public StreamedContent getDownloadFile(){
+		return downloadFile;
+	}
+
+	public String getSelection(){
+		return selection;
+	}
+
+	public void setSelection(String selection){
+		this.selection = selection;
+	}
+
+	public void setDownloadFile(StreamedContent downloadFile){
+		this.downloadFile = downloadFile;
+	}
+
+}

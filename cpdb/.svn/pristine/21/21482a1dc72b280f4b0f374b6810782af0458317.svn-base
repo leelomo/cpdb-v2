@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "htth://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>#{GlobalBean.title}</title>
+
+	<link type="text/css" rel="stylesheet" href="#{GlobalBean.cssMainPath}" />
+
+</h:head>
+<h:body>
+
+	<div align="center">
+
+		<p:layout fullPage="false" style="width:100%; height:800px">
+
+			<p:layoutUnit position="west" size="25%" resizable="true" style="padding:30px;">
+
+				<p:commandButton value="Back" action="#{ContectBean.doNav}" styleClass="p_red_button" update=":layoutMain">
+					<f:param name="page" value="/pages/BrowseArticle.xhtml" />
+					<f:param name="pageName" value="Browse Article" />
+				</p:commandButton>
+
+				<p:graphicImage value="/images/browseCat.jpg" style="width:100%;margin-bottom:10px" />
+				<h:outputText value="HK" />
+
+				<div align="left">
+					<p:outputLabel style="font-size:1.4em;color:#7E7E7E;margin-bottom:10px;">Quickview Info</p:outputLabel>
+				</div>
+
+				<p:panelGrid columns="2" style="margin-top:10px;">
+
+
+					<h:outputText value="SAP Article No:" />
+					<h:outputText value="301265016" />
+
+					<h:outputText value="Article Desc:" />
+					<h:outputText value="Pocky Biscuit Stick - Happy Assort" />
+
+					<h:outputText value="Article Unit:" />
+					<h:outputText value="PC" />
+
+					<h:outputText value="Intl. Barcode:" />
+					<h:outputText value="4901005100435" />
+
+
+					<h:outputText value="Article Type:" />
+					<h:outputText value="Normal Trade Item" />
+
+					<h:outputText value="Article Cat:" />
+					<h:outputText value="Single Article" />
+
+					<h:outputText value="MC Code:" />
+					<h:outputText value="1100643" />
+
+					<h:outputText value="MC Dept:" />
+					<h:outputText value="GROCERY JAPANESE" />
+					<h:outputText value="Brand (EN):" />
+					<h:outputText value="GLICO" />
+
+				</p:panelGrid>
+
+			</p:layoutUnit>
+
+
+			<p:layoutUnit position="center">
+				<p:tabView scrollable="true">
+					<p:tab title="System Info">
+						<div style="float: left;">
+							<ui:include src="/pages/BrowseArticleDetailSystemInfo.xhtml" />
+						</div>
+					</p:tab>
+					<p:tab title="Merchandizing">
+						<div style="float: left;">
+							<ui:include src="/pages/BrowseArticleDetailMerchandizing.xhtml" />
+						</div>
+					</p:tab>
+					<p:tab title="Compliance">
+						<div style="float: left;">
+							<ui:include src="/pages/BrowseArticleDetailCompliance.xhtml" />
+						</div>
+					</p:tab>
+					<p:tab title="Marketing">
+						<div style="float: left;">
+							<ui:include src="/pages/BrowseArticleDetailMarketing.xhtml" />
+						</div>
+					</p:tab>
+
+				</p:tabView>
+
+			</p:layoutUnit>
+		</p:layout>
+
+	</div>
+
+
+
+</h:body>
+</html>

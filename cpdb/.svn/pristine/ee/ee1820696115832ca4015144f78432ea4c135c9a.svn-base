@@ -1,0 +1,119 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core"
+>
+
+	<div align="center">
+		<h:form>
+			<p:tabView>
+				<p:tab title="Report 1">
+					<h:panelGrid columns="2" cellpadding="10">
+						<h:panelGrid style="width:600px;">
+							<ui:insert name="filter">
+								<ui:include src="http://localhost:8080/cpdb/base/Filter.xhtml">
+									<ui:param name="test" value="test" />
+									<ui:param name="tagLine" value="JSF a day, bug away" />
+
+									<ui:param name="filterBean" value="#{reportBean.filterBean}" />
+								</ui:include>
+							</ui:insert>
+							<ui:insert name="test">
+								<ui:include src="http://localhost:8080/cpdb/base/test.xhtml">
+									<ui:param name="tagLine" value="JSF a day, bug away" />
+								</ui:include>
+							</ui:insert>
+						</h:panelGrid>
+
+					</h:panelGrid>
+
+					<p:separator />
+					<p:commandButton value="Generate Excel" ajax="false">
+					</p:commandButton>
+
+					<p:commandButton value="Generate Table" type="button" onclick="PF('dlg1').show();" />
+
+					<c:if test="#{reportBean.showTable}">
+						<h:panelGrid id="panelTable">
+							<h:form>
+								<p:dataTable id="withCommand" var="article" value="#{reportBean.articleList}" rowKey="#{article.id}">
+									<p:column headerText="id">#{article.id}</p:column>
+									<p:column headerText="col1">#{article.col1}</p:column>
+									<p:column headerText="col2">#{article.col2}</p:column>
+									<p:column headerText="col3">#{article.col3}</p:column>
+									<p:column headerText="col4">#{article.col4}</p:column>
+								</p:dataTable>
+							</h:form>
+						</h:panelGrid>
+					</c:if>
+					<p:dialog header="Warning" widgetVar="dlg1" minHeight="40">
+						<h:outputText value="Result set > 2000 plz download the excel." />
+						<br></br>
+						<p:commandButton update="panelTable" action="#{reportBean.doShowTable()}" value="Download Excel" ajax="false">
+						</p:commandButton>
+					</p:dialog>
+
+				</p:tab>
+				<p:tab title="Report 2">
+					<h:panelGrid columns="1" cellpadding="10">
+						<h:form>
+							<h:panelGrid columns="3" cellpadding="10">
+								<h:selectOneMenu>
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItem itemLabel="Equal" itemValue="Equal" />
+									<f:selectItem itemLabel="Not equal" itemValue="Not equal" />
+									<f:selectItem itemLabel="Smaller than" itemValue="Smaller Than" />
+									<f:selectItem itemLabel="Bigger than" itemValue="Bigger Than" />
+									<f:selectItem itemLabel="Like" itemValue="Like" />
+								</h:selectOneMenu>
+								<h:selectOneMenu>
+									<f:selectItem itemLabel="Equal" itemValue="Equal" />
+									<f:selectItem itemLabel="Not equal" itemValue="Not equal" />
+									<f:selectItem itemLabel="Smaller than" itemValue="Smaller Than" />
+									<f:selectItem itemLabel="Bigger than" itemValue="Bigger Than" />
+									<f:selectItem itemLabel="Like" itemValue="Like" />
+								</h:selectOneMenu>
+								<h:inputText value="" />
+
+								<h:selectOneMenu>
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItem itemLabel="Equal" itemValue="Equal" />
+									<f:selectItem itemLabel="Not equal" itemValue="Not equal" />
+									<f:selectItem itemLabel="Smaller than" itemValue="Smaller Than" />
+									<f:selectItem itemLabel="Bigger than" itemValue="Bigger Than" />
+									<f:selectItem itemLabel="Like" itemValue="Like" />
+								</h:selectOneMenu>
+								<h:selectOneMenu>
+									<f:selectItem itemLabel="Equal" itemValue="Equal" />
+									<f:selectItem itemLabel="Not equal" itemValue="Not equal" />
+									<f:selectItem itemLabel="Smaller than" itemValue="Smaller Than" />
+									<f:selectItem itemLabel="Bigger than" itemValue="Bigger Than" />
+									<f:selectItem itemLabel="Like" itemValue="Like" />
+								</h:selectOneMenu>
+								<h:inputText value="" />
+
+								<p:commandButton value="Filter" />
+								<h:outputText value="" />
+								<p:commandButton value="Clear" actionListener="#{selectOneMenuView.clearEditTab}" />
+
+							</h:panelGrid>
+						</h:form>
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Report 3">
+					<h:panelGrid columns="2" cellpadding="10">
+						<h:outputText value="Search filter" />
+
+
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Report 4">
+					<h:panelGrid columns="2" cellpadding="10">
+						<h:outputText value="Search filter" />
+
+
+					</h:panelGrid>
+				</p:tab>
+			</p:tabView>
+		</h:form>
+	</div>
+
+</ui:composition>

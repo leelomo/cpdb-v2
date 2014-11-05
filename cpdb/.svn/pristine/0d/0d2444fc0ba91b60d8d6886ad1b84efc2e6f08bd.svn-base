@@ -1,0 +1,117 @@
+#Menu
+MENU_Label_Home=\u4E3B\u9801
+MENU_Label_Worklist=\u5DE5\u4F5C\u5217\u8868
+MENU_Label_Browse_Article=\u700F\u89BD\u5546\u54C1
+MENU_Label_Create_Article=\u5275\u5EFA\u5546\u54C1
+MENU_Label_Single_creation=\u55AE\u4E00\u5275\u9020
+MENU_Label_Mass_creation=\u5927\u773E\u5275\u9020
+MENU_Label_QA_input=QA\u8F38\u5165
+MENU_Label_Amend_Article=\u4FEE\u6539\u5546\u54C1
+MENU_Label_Reports=\u5831\u544A
+MENU_Label_Audit_Trail=\u5BE9\u8A08\u8DDF\u8E2A
+MENU_Label_Product_Definition=\u7522\u54C1\u5B9A\u7FA9
+MENU_Label_Define_data_fields=\u5B9A\u7FA9\u6578\u64DA\u5B57\u6BB5
+MENU_Label_Define_Product_Template=\u5B9A\u7FA9\u7522\u54C1\u6A21\u677F
+MENU_Label_Define_master_data=\u5B9A\u7FA9\u4E3B\u6578\u64DA
+MENU_Label_System_Monitor=\u7CFB\u7D71\u76E3\u8996\u5668
+MENU_Label_System_Config=\u7CFB\u7D71\u914D\u7F6E
+MENU_Label_Language=\u8A9E\u8A00
+
+
+#Amend article
+AMEND_ARTICLE_Tab_Title_Download=\u4E0B\u8F09 
+AMEND_ARTICLE_Tab_Title_Upload=\u4E0A\u50B3
+
+AMEND_ARTICLE_DataTable_Title_Article_Number_Virtual=\u5546\u54C1\u7DE8\u865F\uFF08\u865B\u64EC\uFF09 
+AMEND_ARTICLE_DataTable_Title_SAP_Article_Number=SAP\u8CA8\u865F 
+AMEND_ARTICLE_DataTable_Title_System_Status =\u7CFB\u7D71\u72C0\u614B 
+AMEND_ARTICLE_DataTable_Title_Article_Status =\u7B2C\u4E8C\u5341\u72C0\u614B 
+AMEND_ARTICLE_DataTable_Title_QA_Status =QA\u72C0\u614B
+
+#Report
+REPORT_Tab_Title_report1=\u5831\u544A1
+REPORT_Tab_Title_report2=\u5831\u544A2
+REPORT_Tab_Title_report3=\u5831\u544A3
+REPORT_Tab_Title_report4=\u5831\u544A4
+
+REPORT_DataTable_Title_id=id
+REPORT_DataTable_Title_cod1=cod1
+REPORT_DataTable_Title_cod2=cod2
+REPORT_DataTable_Title_cod3=cod3
+REPORT_DataTable_Title_cod4=cod4
+
+REPORT_P_Btn_Generate_Excel=\u751F\u6210EXCEL 
+REPORT_P_Btn_Generate_Table=\u751F\u6210\u8868\u683C
+REPORT_P_Btn_Download_Excel=\u4E0B\u8F09\u8868\u683C
+
+REPORT_Label_Result_MoreThen_2000=\u7D50\u679C>2000\uFF0C\u8ACB\u4E0B\u8F09Excel\u3002
+
+
+#Audit trail
+AUDIT_TRAIL_Tab_Title_System_Log=\u7CFB\u7D71\u65E5\u8A8C 
+AUDIT_TRAIL_Tab_Title_Authentication_Log=\u8A8D\u8B49\u65E5\u8A8C 
+
+AUDIT_TRAIL_System_Log_DataTable_Title_Event_ID =\u4E8B\u4EF6ID 
+AUDIT_TRAIL_System_Log_DataTable_Title_Time=\u6642\u9593 
+AUDIT_TRAIL_System_Log_DataTable_Title_Actor=\u6F14\u54E1 
+AUDIT_TRAIL_System_Log_DataTable_Title_Description =\u63CF\u8FF0
+
+AUDIT_TRAIL_Authentication_Log_DataTable_Title_User_ID=\u7528\u6236\u8EAB\u4EFD 
+AUDIT_TRAIL_Authentication_Log_DataTable_Title_Login_Attempt_Time=\u5617\u8A66\u767B\u9304\u6642\u9593 
+AUDIT_TRAIL_Authentication_Log_DataTable_Title_Login_Result=\u767B\u9304\u7D50\u679C 
+AUDIT_TRAIL_Authentication_Log_DataTable_Title_Session_In=\u6703\u8B70\u5728 
+AUDIT_TRAIL_Authentication_Log_DataTable_Title_Session_Out=\u6703\u8B70\u9000\u623F 
+AUDIT_TRAIL_Authentication_Log_DataTable_Title_Logout_Time=\u9000\u51FA\u6642\u9593
+
+AUDIT_TRAIL_Authentication_Log_P_Btn_Export=\u532F\u51FA
+
+#Worklist
+WORKLIST_Tab_Title_My_WorkList=\u6211\u7684\u5DE5\u4F5C\u6E05\u55AE
+WORKLIST_Tab_Title_All_WorkList=\u6240\u6709\u5DE5\u4F5C\u6E05\u55AE 
+WORKLIST_Tab_Title_Total_WorkList=\u7E3D\u5DE5\u4F5C\u6E05\u55AE
+
+WORKLIST_DataTable_Title_Process_ID=\u6D41\u7A0B\u7DE8\u865F
+WORKLIST_DataTable_Title_Process_Type=\u6D41\u7A0B\u985E\u578B 
+WORKLIST_DataTable_Title_Market=\u5E02\u5834 
+WORKLIST_DataTable_Title_Dept_No=\u90E8\u9580\u7DE8\u865F
+WORKLIST_DataTable_Title_Dept_Name=\u90E8\u9580\u540D\u7A31
+WORKLIST_DataTable_Title_Description=\u63CF\u8FF0 
+WORKLIST_DataTable_Title_Article_No=\u6587\u7AE0\u7DE8\u865F
+WORKLIST_DataTable_Title_SAPArticleNo=SAP\u6587\u7AE0\u7DE8\u865F
+WORKLIST_DataTable_Title_Process_Status=\u9032\u7A0B\u72C0\u614B
+WORKLIST_DataTable_Title_Process_Start=\u6D41\u7A0B\u555F\u52D5 
+WORKLIST_DataTable_Title_Requested_By=\u7533\u8BF7
+WORKLIST_DataTable_Title_Due_Date=\u5230\u671F\u65E5
+WORKLIST_DataTable_Title_Process_Last_Update_By=\u904E\u7A0B\u6700\u5F8C\u66F4\u65B0 
+WORKLIST_DataTable_Title_Nat_Approver=\u7D0D\u7279\u5BE9\u6279 
+WORKLIST_DataTable_Title_View_Article=\u67E5\u770B\u6587\u7AE0
+
+#Product definition
+PRODUCT_DEFINITON_Fieldset_Title_Select_Option =\u9078\u64C7\u9078\u9805 
+PRODUCT_DEFINITON_Button_Title_Define_data fields=\u5B9A\u7FA9\u6578\u64DA\u5B57\u6BB5 
+PRODUCT_DEFINITON_Button_Title_Define_Product_Template=\u5B9A\u7FA9\u7522\u54C1\u6A21\u677F 
+PRODUCT_DEFINITON_Button_Title_Define master data=\u5B9A\u7FA9\u4E3B\u6578\u64DA
+
+PRODUCT_DEFINITON_Define_product_Template_Page_Title_Main=\u4E3B\u8981
+PRODUCT_DEFINITON_Define_product_Template_Button_Title_New=\u65B0\u5EFA
+PRODUCT_DEFINITON_Define_product_Template_Button_Title_Delete=\u522A\u9664
+PRODUCT_DEFINITON_Define_product_Template_DataTable_Title_Field_Key=\u91CD\u9EDE\u9818\u57DF
+PRODUCT_DEFINITON_Define_product_Template_DataTable_Title_Filed_Name=\u63D0\u8D77\u540D\u7A31
+PRODUCT_DEFINITON_Define_product_Template_DataTable_Title_Field_Description=\u5B57\u6BB5\u8AAA\u660E
+PRODUCT_DEFINITON_Define_product_Template_DataTable_Title_Action=\u884C\u52D5
+
+PRODUCT_DEFINITON_Define_product_Template_DataTable_Title_Define_Product_Template=\u5B9A\u7FA9\u7522\u54C1\u6A21\u677F 
+PRODUCT_DEFINITON_Define_product_Template_DataTable_Title_Template_Name=\u6A21\u677F\u540D\u7A31
+
+PRODUCT_DEFINITON_Define_master_data_DataTable_Title_Master_Data_Key=\u4E3B\u6578\u64DA\u7684\u95DC\u9375
+PRODUCT_DEFINITON_Define_master_data_DataTable_Title_Master_Data_Name=\u4E3B\u6578\u64DA\u540D\u7A31
+PRODUCT_DEFINITON_Define_master_data_DataTable_Title_Type=\u985E\u578B
+PRODUCT_DEFINITON_Define_master_data_DataTable_Title_Description=\u63CF\u8FF0
+PRODUCT_DEFINITON_Define_master_data_DataTable_Title_Create_On=\u5275\u5EFA\u65E5\u671F
+PRODUCT_DEFINITON_Define_master_data_DataTable_Title_Create_By=\u5275\u5EFA\u8005
+PRODUCT_DEFINITON_Define_master_data_DataTable_Title_Modified_On=\u4FEE\u6539\u65E5\u671F
+PRODUCT_DEFINITON_Define_master_data_DataTable_Title_Modified_By=\u4FEE\u6539\u8005
+
+PRODUCT_DEFINITON_Define_product_Template_Page_Title_Main=\u4E3B\u8981
+PRODUCT_DEFINITON_Define_master_data_Page_Title_Main=\u4E3B\u8981
+

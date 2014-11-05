@@ -1,0 +1,112 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div align="left">
+
+		<p:tabView>
+
+			<p:tab title="#{languageLabel['WORKLIST_Tab_Title_My_WorkList']}"
+				titleStyleClass="tabStyle">
+
+				<h:panelGrid>
+					<ui:insert name="filter"
+						style="border-style:solid; border-width:1px">
+						<ui:include src="#{GlobalBean.filterPath}">
+							<ui:param name="filterBean" value="#{worklistBean.filterBean}" />
+						</ui:include>
+					</ui:insert>
+				</h:panelGrid>
+				
+				<h:form>
+
+					<p:dataTable var="worklist" value="#{worklistBean.worklists}"
+						selection="#{worklistBean.selectList}"
+						rowKey="#{worklist.processID}">
+						<p:column selectionMode="multiple"
+							style="width:16px;text-align:center" />
+						<p:column
+							headerText="#{languageLabel['WORKLIST_DataTable_Title_Process_ID']}">
+							<h:outputText value="#{worklist.processID}" />
+						</p:column>
+
+						<p:column
+							headerText="#{languageLabel['WORKLIST_DataTable_Title_Process_Type']}">
+							<h:outputText value="#{worklist.processType}" />
+						</p:column>
+
+						<p:column
+							headerText="#{languageLabel['WORKLIST_DataTable_Title_Market']}">
+							<h:outputText value="#{worklist.market}" />
+						</p:column>
+
+						<p:column
+							headerText="#{languageLabel['WORKLIST_DataTable_Title_Dept_No']}">
+							<h:outputText value="#{worklist.deptNo}" />
+						</p:column>
+						<p:column
+							headerText="#{languageLabel['WORKLIST_DataTable_Title_Dept_Name']}">
+							<h:outputText value="#{worklist.dept}" />
+						</p:column>
+						<p:column
+							headerText="#{languageLabel['WORKLIST_DataTable_Title_Description']}">
+							<h:outputText value="#{worklist.desc}" />
+						</p:column>
+						<p:column
+							headerText="#{languageLabel['WORKLIST_DataTable_Title_Article_No']}">
+							<h:outputText value="#{worklist.article}" />
+						</p:column>
+						<p:column
+							headerText="#{languageLabel['WORKLIST_DataTable_Title_SAPArticleNo']}">
+							<h:outputText value="#{worklist.sapArticle}" />
+						</p:column>
+						<p:column
+							headerText="#{languageLabel['WORKLIST_DataTable_Title_Process_Status']}">
+							<h:outputText value="#{worklist.processStatus}" />
+						</p:column>
+						<p:column
+							headerText="#{languageLabel['WORKLIST_DataTable_Title_Process_Start']}">
+							<h:outputText value="#{worklist.processStart}" />
+						</p:column>
+						<p:column
+							headerText="#{languageLabel['WORKLIST_DataTable_Title_Requested_By']}">
+							<h:outputText value="#{worklist.requestedBy}" />
+						</p:column>
+						<p:column
+							headerText="#{languageLabel['WORKLIST_DataTable_Title_Due_Date']}">
+							<h:outputText value="#{worklist.dueDate}" />
+						</p:column>
+						<p:column
+							headerText="#{languageLabel['WORKLIST_DataTable_Title_Process_Last_Update_By']}">
+							<h:outputText value="#{worklist.proccessUpdatedBy}" />
+						</p:column>
+						<p:column
+							headerText="#{languageLabel['WORKLIST_DataTable_Title_Nat_Approver']}">
+							<h:outputText value="#{worklist.natApprover}" />
+						</p:column>
+						<p:column
+							headerText="#{languageLabel['WORKLIST_DataTable_Title_View_Article']}">
+							<h:commandButton value="View" action="#{ContectBean.doNav}">
+								<f:param name="page" value="/pages/BrowseArticleDetail.xhtml" />
+								<f:param name="pageName" value="Browse Article" />
+							</h:commandButton>
+						</p:column>
+
+					</p:dataTable>
+					<p:commandButton value="Download" ajax="false"
+						styleClass="p_green_button">
+						<p:fileDownload value="#{createArticleBean.downloadFile}" />
+					</p:commandButton>
+				</h:form>
+			</p:tab>
+			<p:tab title="#{languageLabel['WORKLIST_Tab_Title_All_WorkList']}">
+
+			</p:tab>
+			<p:tab title="#{languageLabel['WORKLIST_Tab_Title_Total_WorkList']}">
+
+			</p:tab>
+		</p:tabView>
+	</div>
+</ui:composition>

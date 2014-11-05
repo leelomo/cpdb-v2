@@ -1,0 +1,375 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core"
+>
+
+	<h:panelGrid>
+
+		<p:tabView>
+			<p:tab title="Basic info">
+				<h:panelGrid columns="2" cellpadding="3">
+
+					<h:outputText value="Article Number" />
+					<h:outputText />
+					<h:outputText value="SAP Article Description(Internal Use)" />
+					<h:outputText />
+					<h:outputText value="Article Status" />
+					<h:outputText value="new value 1" />
+					
+					<h:outputText value="Article Status - Reason Code" />
+					<h:outputText value="new value 1" />
+					
+					<h:outputText value="Article Unit" />
+					<h:outputText value="new value 1" />
+					
+					<h:outputText value="International Barcode" />
+					<h:outputText />
+					<h:outputText value="Barcode Label Type" />
+					<h:outputText value="new value 1" />
+					
+					<h:outputText value="Article Type" />
+					<h:outputText value="new value 1" />
+					
+					<h:outputText value="Article Category" />
+					<h:outputText value="new value 1" />
+					
+					<h:outputText value="Merchandise Category" />
+					<h:outputText value="new value 1" />
+					
+					<h:outputText value="Merchandise Category - Department" />
+					<h:outputText />
+					<h:outputText value="Valuation Class" />
+					<h:outputText value="new value 1" />
+					
+					<h:outputText value="Merchandise Category" />
+					<h:outputText value="new value 1" />
+					
+					<h:outputText value="Brand Code" />
+					<h:outputText value="new value 1" />
+					
+
+					<h:outputText value="Language" />
+					<h:outputText value="English" />
+					
+					<h:outputText value="Brand Description" />
+					<h:outputText />
+
+					<h:outputText value="TILL Description(XXX)" />
+					<h:outputText />
+
+
+					<h:outputText value="Brand Unit" />
+					<h:outputText value="new value 1" />
+					
+					<h:outputText value="Fair Trade" />
+					<h:outputText value="new value 1" />
+					
+					<h:outputText value="Output Tax" />
+					<h:outputText value="new value 1" />
+					
+					<h:outputText value="Season" />
+					<h:outputText value="new value 1" />
+					
+					<h:outputText value="Season Year" />
+					<h:outputText></h:outputText>
+					<h:outputText value="Product Nature" />
+					<h:outputText value="new value 1" />
+					
+					<h:outputText value="Gross Weight / Basic Unit" />
+					<h:outputText></h:outputText>
+					<h:outputText value="Gross Weight Unit / Basic Unit" />
+					<h:outputText value="new value 1" />
+					
+					<h:outputText value="Length / Basic Unit" />
+					<h:outputText></h:outputText>
+					<h:outputText value="Width / Basic Unit" />
+					<h:outputText></h:outputText>
+					<h:outputText value="Height / Basic Unit" />
+					<h:outputText></h:outputText>
+					<h:outputText value="Unit of Dimension for Length/Width/Height" />
+					<h:outputText value="new value 1" />
+					
+					<h:outputText value="Volume / Basic Unit" />
+					<h:outputText></h:outputText>
+					<h:outputText value="Volume Unit / Basic Unit" />
+					<h:outputText></h:outputText>
+					<h:outputText value="Article First Listing Date" />
+					<h:outputText></h:outputText>
+					<h:outputText value="Article Photo (XXX)" />
+					<h:graphicImage width="200" height="200"></h:graphicImage>
+					<h:outputText value="Commercial Photo" />
+					<h:selectBooleanCheckbox disabled="true"></h:selectBooleanCheckbox>
+
+
+				</h:panelGrid>
+			</p:tab>
+
+
+			<p:tab title="Purchasing">
+
+				<h:panelGrid columns="1" cellpadding="10">
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputText value="Purchasing Org." />
+						<h:outputText value="1000 City Super Limited" />
+						
+					</h:panelGrid>
+
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel value="Import Document and Certificate:" style="" />
+						<p:outputLabel value="Certificate 1" style="" />
+						
+					</h:panelGrid>
+
+					<h:panelGrid columns="2" cellpadding="5" style="border:3px solid #D7D7D7; padding:10px;">
+
+						<h:outputText value="Import Status" />
+						<h:outputText value="new value 1" />
+						
+						<h:outputText value="Import Remark" />
+						<h:outputText></h:outputText>
+						<h:outputText value="HS Code" />
+						<h:outputText value="new value 1" />
+						
+						<h:outputText value="HS Sub-Code" />
+						<h:outputText></h:outputText>
+						<h:outputText value="Import Duties %" />
+						<h:outputText></h:outputText>
+						<h:outputText value="Commodity Tax %" />
+						<h:outputText></h:outputText>
+						<h:outputText value="Consumption Tax %" />
+						<h:outputText></h:outputText>
+						<h:outputText value="Purchasing Group" />
+						<h:outputText value="new value 1" />
+					</h:panelGrid>
+				</h:panelGrid>
+
+
+
+
+				<h:panelGrid columns="2" cellpadding="5" style="margin-top:30px;">
+					<h:outputText value="Vendor" />
+					<h:outputText value="1001044 MAKOTO SHOKAI" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="2" cellpadding="10">
+
+					<h:panelGrid columns="2" cellpadding="5" style="border:3px solid #D7D7D7; padding:10px;">
+						<h:outputText value="Vendor Code"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Vendor Name"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Last Shipping Cost for consolidator"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Vendor Subrange"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Vendor Code (SAP: Invoicing Party)"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Vendor name (SAP: Invoicing Party)"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Vendor Departing Country (From vendor master)"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Vendor Item Number"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Vendor Item Description"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Order Unit"></h:outputText>
+						<h:outputText value="new value 1"></h:outputText>
+
+						<h:outputText value="Quantum"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Pack Size"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Rounding Profile"></h:outputText>
+						<h:outputText value="new value 1"></h:outputText>
+						
+						<h:outputText value="Packing Description"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Gross Weight / Basic Unit"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Gross Weight Unit / Basic Unit"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Length / Basic Unit"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Width / Basic Unit"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Height / Basic Unit"></h:outputText>
+						<h:outputText></h:outputText>
+					</h:panelGrid>
+
+					<h:panelGrid columns="2" cellpadding="5" style="border:3px solid #D7D7D7; padding:10px;">
+						<h:outputText value="Unit of Dimension for Length/Width/Height"></h:outputText>
+						<h:outputText value="new value 1"></h:outputText>
+
+						<h:outputText value="Volume / Basic Unit"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Volume Unit / Basic Unit"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Delivery Location"></h:outputText>
+						<h:outputText value="new value 1"></h:outputText>
+						
+						<h:outputText value="Container Type"></h:outputText>
+						<h:outputText value="new value 1"></h:outputText>
+						
+						<h:outputText value="Ship Mode"></h:outputText>
+						<h:outputText value="new value 1"></h:outputText>
+						
+						<h:outputText value="Shelf Life Remark"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Total Shelf Life"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Rem. Shelf Life"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Planned Delivery Time"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Minimum Order"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Minimum Order Amount"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Confirmation Control"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Input Tax"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Currency"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Net Cost / Order Unit "></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Net Cost / @ (Original)"></h:outputText>
+						<h:outputText></h:outputText>
+					</h:panelGrid>
+
+
+
+
+					<h:panelGrid columns="2" style="padding:10px;">
+						<h:outputText value="Site"></h:outputText>
+						<h:outputText value="1000 Site 1"></h:outputText>
+					</h:panelGrid>
+
+
+					<h:panelGrid columns="1" width="600">
+						<p:dataTable var="purchasing" value="#{purchasingDataBean.purchasingDatas}">
+							<p:column headerText="Purchasing Org." width="200">
+								<h:outputText value="#{purchasing.purchsingOrg}" />
+							</p:column>
+
+							<p:column headerText="Vendor" width="200">
+								<h:outputText value="#{purchasing.vendor}" />
+							</p:column>
+
+							<p:column headerText="Rank" width="200">
+								<h:outputText value="#{purchasing.rank}" />
+							</p:column>
+						</p:dataTable>
+					</h:panelGrid>
+
+				</h:panelGrid>
+			</p:tab>
+			<p:tab title="Sales">
+				<h:panelGrid columns="2">
+
+					<h:panelGrid columns="1" border="1">
+						<h:outputText value="Sales Org."></h:outputText>
+						<h:outputText value="1000 City Super Limited" />
+					
+					</h:panelGrid>
+					<h:panelGrid columns="2" border="1">
+
+						<h:outputText value="Sales Unit"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Unit of Conversion"></h:outputText>
+						<h:outputText></h:outputText>
+
+					</h:panelGrid>
+
+					<h:panelGrid columns="2">
+						<h:panelGrid columns="1" border="1">
+							<h:outputText value="Sales Org."></h:outputText>
+							<h:outputText value="1000 City Super Limited" />
+					
+
+						</h:panelGrid>
+						<h:panelGrid columns="1" border="1">
+							<h:outputText value="Dist.Channel"></h:outputText>
+							<h:outputText value="01 Retail" />
+
+						</h:panelGrid>
+					</h:panelGrid>
+
+					<h:panelGrid columns="2" border="1">
+						<h:outputText value="VIP Discount (Current) "></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="VIP Discount (Current) From"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="VIP Discount (Current) To"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="VIP Discount (Future) "></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="VIP Discount (Future) From"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="VIP Discount (Future) To"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="PP Det. Seq. #"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="SP Determ. Seq. #"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Fix Price Indicator"></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Pricing Information"></h:outputText>
+						<h:outputText value=""></h:outputText>
+						<h:outputText value="Final Price (with Tax) "></h:outputText>
+						<h:outputText></h:outputText>
+						<h:outputText value="Final Price (with Tax) "></h:outputText>
+						<h:outputText></h:outputText>
+					</h:panelGrid>
+
+
+				</h:panelGrid>
+			</p:tab>
+			<p:tab title="DC">
+				<h:panelGrid columns="1">
+
+					<p:dataList value="#{dataListViewBean.list1s}" var="list1" type="definition">
+						<f:facet name="header">Dependency - Distribution Center as Site</f:facet>
+        									#{list1}</p:dataList>
+					<p:dataList value="#{dataListViewBean.list2s}" var="list2" type="definition">
+						<f:facet name="header">Dependency - Warehouse Number</f:facet>
+        									#{list2}</p:dataList>
+					<p:dataList value="#{dataListViewBean.list3s}" var="list3" type="definition">
+						<f:facet name="header">Dependency - Distribution Center as Site AND Purchasing Org AND Vendor</f:facet>
+        									#{list3}</p:dataList>
+
+
+
+
+				</h:panelGrid>
+			</p:tab>
+			<p:tab title="Store">
+				<h:panelGrid columns="1">
+					<p:dataList value="#{dataListViewBean.list4s}" var="list4" type="definition">
+						<f:facet name="header">Dependency - Sales Organization AND Dist. Channel AND Store as Site</f:facet>
+        									#{list4}</p:dataList>
+
+				</h:panelGrid>
+			</p:tab>
+			<p:tab title="Attributes">
+				<h:panelGrid columns="1">
+
+					<p:dataList value="#{dataListViewBean.list5s}" var="list5" type="definition">#{list5}</p:dataList>
+					<p:dataList value="#{dataListViewBean.list6s}" var="list6" type="definition">
+						<f:facet name="header">Dependency - Language</f:facet>
+        									#{list6}</p:dataList>
+
+				</h:panelGrid>
+			</p:tab>
+			<p:tab title="Supp. Info">
+				<h:panelGrid columns="1">
+
+					<p:dataList value="#{dataListViewBean.list7s}" var="list7" type="definition">#{list7}
+    									</p:dataList>
+				</h:panelGrid>
+			</p:tab>
+		</p:tabView>
+
+	</h:panelGrid>
+
+</ui:composition>

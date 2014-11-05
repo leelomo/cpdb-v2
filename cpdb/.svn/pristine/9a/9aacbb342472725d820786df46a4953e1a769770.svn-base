@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+>
+	<div align="center">
+		<h:panelGrid style="width:600px;">
+			<ui:insert name="filter">
+				<ui:include src="#{GlobalBean.filterPath}">
+					<ui:param name="filterBean" value="#{browseArticleBean.filterBean}" />
+				</ui:include>
+			</ui:insert>
+		</h:panelGrid>
+		
+		<p:separator />
+
+		<h:form>
+			<f:ajax render=":layoutMain" execute="@this">
+				<p:dataTable id="withCommand" var="article" value="#{browseArticleBean.articleList}" rowKey="#{article.id}">
+					<p:column headerText="Article Number (Virtual)">#{article.id}</p:column>
+					<p:column headerText="SAP Article Number">#{article.col1}</p:column>
+					<p:column headerText="System Status">#{article.col2}</p:column>
+					<p:column headerText="Article Status">#{article.col3}</p:column>
+					<p:column headerText="QA Status">#{article.col4}</p:column>
+					<p:column headerText="Action">
+						<h:commandButton class="main_left_button" value="View Detail" action="#{ContectBean.doNav}">
+							<f:param name="page" value="/pages/BrowseArticleDetail.xhtml" />
+							<f:param name="pageName" value="Browse Article" />
+						</h:commandButton>
+					</p:column>
+				</p:dataTable>
+			</f:ajax>
+		</h:form>
+	</div>
+</ui:composition>

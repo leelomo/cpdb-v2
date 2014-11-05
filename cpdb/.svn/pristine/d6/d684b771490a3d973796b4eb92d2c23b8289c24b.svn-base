@@ -1,0 +1,30 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+>
+
+
+	<div align="center">
+
+		<h:form prependId="false">
+			<h:commandButton value="Single creation" action="#{ContectBean.doNav}">
+				<f:param name="page" value="/pages/CreateArticleSingle.xhtml" />
+				<f:param name="pageName" value="Create Article - Single" />
+			</h:commandButton>
+			<br />
+			<h:commandButton value="Mass creation" action="#{ContectBean.doNav}">
+				<f:param name="page" value="/pages/CreateArticleMass.xhtml" />
+				<f:param name="pageName" value="Create Article - Mass" />
+			</h:commandButton>
+			<br />
+			<h:commandButton value="QA import" action="#{ContectBean.doNav}">
+				<f:param name="page" value="/pages/CreateArticleQA.xhtml" />
+				<f:param name="pageName" value="QA input" />
+			</h:commandButton>
+			<br />
+		</h:form>
+	</div>
+</ui:composition>

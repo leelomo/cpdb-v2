@@ -1,0 +1,108 @@
+/** Add css rules here for your application. */
+/** Example rules used by the template application (remove for your app) */
+
+
+.my-batch-number {
+	color: white;
+	font-weight: bold;
+}
+
+.my-batch-button-text-black {
+	color: black;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.my-batch-button-text-white {
+	color: white;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+#my-progressbar {
+	background-color: #eeeeee;
+	border: 1px solid #aaaaaa;
+	border-radius: 2px;
+	padding: 3px;
+}
+
+#my-progressbar div {
+	background-color: #55ee55;
+	height: 15px;
+	border-radius: 2px;
+}
+
+#my-progressbar span {
+	color: #111111;
+	position: absolute; 
+}
+
+#my-progressbar-inter {
+	background-color: #eeeeee;
+	border: 1px solid #aaaaaa;
+	border-radius: 2px;
+	padding: 3px;
+}
+
+#my-progressbar-inter div {
+	background-color: #eac73a;
+	height: 15px;
+	border-radius: 2px;
+}
+
+#my-progressbar-inter span {
+	color: #111111;
+	position: absolute; 
+}
+
+#my-progressbar-finish {
+	background-color: #eeeeee;
+	border: 1px solid #aaaaaa;
+	border-radius: 2px;
+	padding: 3px;
+}
+
+#my-progressbar-finish div {
+	background-color: #55ee55;
+	height: 15px;
+	border-radius: 2px;
+}
+
+#my-progressbar-finish span {
+	color: #111111;
+	position: absolute; 
+}
+
+#my-progressbar-over {
+	background-color: #eeeeee;
+	border: 1px solid #aaaaaa;
+	border-radius: 2px;
+	padding: 3px;
+}
+
+#my-progressbar-over div {
+	background-color: #ff5555;
+	height: 15px;
+	border-radius: 2px;
+}
+
+#my-progressbar-over span {
+	color: #111111;
+	position: absolute;   
+}
+
+div.my-colortag {
+	width: 70%;
+	border-radius: 2px;
+	padding: 3px;
+}
+
+.status-html {
+	border-collapse: collapse;
+}
+
+.status-html tr,td {
+	border: 0px;
+	border-collapse: collapse;
+}
+

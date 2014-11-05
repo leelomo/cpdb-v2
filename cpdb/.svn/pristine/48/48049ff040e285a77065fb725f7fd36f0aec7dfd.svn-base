@@ -1,0 +1,82 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+>
+
+	<div align="left">
+
+		<p:layout fullPage="false" style="width:100%; height:800px">
+
+			<p:layoutUnit position="west" size="260px" resizable="false" style="padding:10px 20px 20px 20px;">
+
+				<p:chart type="pie" model="#{chartView.pieModel1}" style="width:200px;height:350px;" />
+
+				<p:panelGrid columns="2" style="margin-top:10px; width:200px;">
+
+					<h:outputText value="Total No. of Article" />
+					<h:outputText value="102515" />
+
+					<h:outputText value="Pending No. of Article" />
+					<h:outputText value="512" />
+
+					<h:outputText value="Articles (Active)" />
+					<h:outputText value="61263" />
+
+					<h:outputText value="Articles (Freeze)" />
+					<h:outputText value="2612" />
+
+					<h:outputText value="Articles (Discontinue)" />
+					<h:outputText value="38128" />
+
+				</p:panelGrid>
+
+
+			</p:layoutUnit>
+
+			<p:layoutUnit position="center">
+				<div align="left">
+
+					<h:outputText style="font-size:16px;" value="Searching Criteria" />
+					<p />
+
+					<h:panelGrid style="width:600px;">
+						<ui:insert name="filter" style="border-style:solid; border-width:1px">
+							<ui:include src="#{GlobalBean.filterPath}">
+								<ui:param name="filterBean" value="#{browseArticleBean.filterBean}" />
+							</ui:include>
+						</ui:insert>
+					</h:panelGrid>
+
+					<p />
+					<h:outputText style="font-size:16px" value="Matched Articles" />
+					<p />
+
+
+					<h:form>
+						<f:ajax render=":layoutMain" execute="@this">
+							<p:dataTable id="withCommand" var="article" paginator="true"
+								paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="50,100,200"
+								value="#{browseArticleBean.articleList}" rowKey="#{article.id}"
+							>
+								<p:column headerText="Virtual Article Number">#{article.id}</p:column>
+								<p:column headerText="SAP Article Number">#{article.col1}</p:column>
+								<p:column headerText="System Status">#{article.col2}</p:column>
+								<p:column headerText="Article Status">#{article.col3}</p:column>
+								<p:column headerText="QA Status">#{article.col4}</p:column>
+								<p:column headerText="Action">
+									<h:commandButton class="main_left_button" value="View Detail" action="#{ContectBean.doNav}">
+										<f:param name="page" value="/pages/BrowseArticleDetail.xhtml" />
+										<f:param name="pageName" value="Browse Article" />
+									</h:commandButton>
+								</p:column>
+							</p:dataTable>
+						</f:ajax>
+					</h:form>
+				</div>
+
+
+			</p:layoutUnit>
+		</p:layout>
+		
+	</div>
+	
+</ui:composition>

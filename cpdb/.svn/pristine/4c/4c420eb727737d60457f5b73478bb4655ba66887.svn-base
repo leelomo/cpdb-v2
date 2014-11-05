@@ -1,0 +1,228 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+>
+
+	<div align="center">
+		<h:form>
+			<p:tabView >
+				<p:tab title="My Worklist" titleStyleClass="tabStyle"  >
+					<h:panelGrid columns="1" cellpadding="10">
+					<h:panelGrid  style="margin-left:30%;width:600px;">
+						<h:form id="formId">
+							<p:dataTable var="dtoBean" value="#{selectOneMenuView.listDtoBean}" id="testTable">
+								<p:column headerText="Data Field">
+									<h:outputText value="#{dtoBean.string}" />
+								</p:column>
+
+								<p:column headerText="Operator">
+									<h:outputText value="#{dtoBean.string2}" />
+								</p:column>
+
+								<p:column headerText="Value">
+									<h:outputText value="#{dtoBean.string3}" />
+								</p:column>
+								<p:column headerText="Action">
+									<p:commandButton value="Delete" actionListener="#{selectOneMenuView.deleteEditTab(dtoBean)}" update="testTable" />
+								</p:column>
+
+
+							</p:dataTable>
+
+							<h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="5">
+								<p:commandButton value="+" id="ajax" actionListener="#{selectOneMenuView.addEditTab}" update="testTable" />
+								<h:selectOneMenu id="menuId" value="#{selectOneMenuView.city}">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItems value="#{selectOneMenuView.cities}" />
+								</h:selectOneMenu>
+
+
+								<h:selectOneMenu id="menuId2" value="#{selectOneMenuView.console}">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItem itemLabel="Equal" itemValue="Equal" />
+									<f:selectItem itemLabel="Not equal" itemValue="Not equal" />
+									<f:selectItem itemLabel="Smaller than" itemValue="Smaller Than" />
+									<f:selectItem itemLabel="Bigger than" itemValue="Bigger Than" />
+									<f:selectItem itemLabel="Like" itemValue="Like" />
+								</h:selectOneMenu>
+
+								<h:inputText value="C" id="textC" />
+
+								<p:commandButton value="Filter" />
+								<p:commandButton value="Clear" update="testTable" actionListener="#{selectOneMenuView.clearEditTab}" />
+
+							</h:panelGrid>
+
+
+						</h:form>
+						</h:panelGrid>
+						<p:separator></p:separator>
+						<p:dataTable var="worklist" value="#{worklistBean.worklists}" selection="#{worklistBean.selectList}" rowKey="#{worklist.processID}">
+							<p:column selectionMode="multiple" style="width:16px;text-align:center" />
+							<p:column headerText="Process ID">
+								<h:outputText value="#{worklist.processID}" />
+							</p:column>
+
+							<p:column headerText="Process Type">
+								<h:outputText value="#{worklist.processType}" />
+							</p:column>
+
+							<p:column headerText="Market">
+								<h:outputText value="#{worklist.market}" />
+							</p:column>
+
+							<p:column headerText="Dept.No.">
+								<h:outputText value="#{worklist.deptNo}" />
+							</p:column>
+							<p:column headerText="Dept.">
+								<h:outputText value="#{worklist.dept}" />
+							</p:column>
+							<p:column headerText="Description">
+								<h:outputText value="#{worklist.desc}" />
+							</p:column>
+							<p:column headerText="Article#">
+								<h:outputText value="#{worklist.article}" />
+							</p:column>
+							<p:column headerText="SAP Article#">
+								<h:outputText value="#{worklist.sapArticle}" />
+							</p:column>
+							<p:column headerText="Process status">
+								<h:outputText value="#{worklist.processStatus}" />
+							</p:column>
+							<p:column headerText="Process start">
+								<h:outputText value="#{worklist.processStart}" />
+							</p:column>
+							<p:column headerText="Requested by">
+								<h:outputText value="#{worklist.requestedBy}" />
+							</p:column>
+							<p:column headerText="Due Date">
+								<h:outputText value="#{worklist.dueDate}" />
+							</p:column>
+							<p:column headerText="Process last update by">
+								<h:outputText value="#{worklist.proccessUpdatedBy}" />
+							</p:column>
+							<p:column headerText="Nat approver">
+								<h:outputText value="#{worklist.natApprover}" />
+							</p:column>
+							<p:column headerText="View article">
+								<h:commandButton value="View" action="#{ContectBean.doNav}">
+									<f:param name="page" value="/pages/BrowseArticleDetail.xhtml" />
+									<f:param name="pageName" value="Browse Article" />
+								</h:commandButton>
+							</p:column>
+
+						</p:dataTable>
+						<p:commandButton value="Download" ajax="false">
+							<p:fileDownload value="#{createArticleBean.downloadFile}" />
+						</p:commandButton>
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="All Worklist">
+					<h:panelGrid columns="2" cellpadding="10">
+					<h:panelGrid  style="width:600px;">
+						<h:form id="formId2">
+							<p:dataTable var="dtoBean" value="#{selectOneMenuView.listDtoBean}" id="testTable">
+								<p:column headerText="Data Field">
+									<h:outputText value="#{dtoBean.string}" />
+								</p:column>
+
+								<p:column headerText="Operator">
+									<h:outputText value="#{dtoBean.string2}" />
+								</p:column>
+
+								<p:column headerText="Value">
+									<h:outputText value="#{dtoBean.string3}" />
+								</p:column>
+								<p:column headerText="Action">
+									<p:commandButton value="Delete" actionListener="#{selectOneMenuView.deleteEditTab(dtoBean)}" update="testTable" />
+								</p:column>
+
+
+							</p:dataTable>
+
+							<h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="5">
+								<p:commandButton value="+" id="ajax" actionListener="#{selectOneMenuView.addEditTab}" update="testTable" />
+								<h:selectOneMenu id="menuId" value="#{selectOneMenuView.city}">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItems value="#{selectOneMenuView.cities}" />
+								</h:selectOneMenu>
+
+
+								<h:selectOneMenu id="menuId2" value="#{selectOneMenuView.console}">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItem itemLabel="Equal" itemValue="Equal" />
+									<f:selectItem itemLabel="Not equal" itemValue="Not equal" />
+									<f:selectItem itemLabel="Smaller than" itemValue="Smaller Than" />
+									<f:selectItem itemLabel="Bigger than" itemValue="Bigger Than" />
+									<f:selectItem itemLabel="Like" itemValue="Like" />
+								</h:selectOneMenu>
+
+								<h:inputText value="C" id="textC" />
+
+								<p:commandButton value="Filter" />
+								<p:commandButton value="Clear" update="testTable" actionListener="#{selectOneMenuView.clearEditTab}" />
+
+							</h:panelGrid>
+
+
+						</h:form>
+
+</h:panelGrid>
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Total Worklist">
+					<h:panelGrid columns="2" cellpadding="10">
+						<h:panelGrid  style="width:600px;">
+						<h:form id="formId3">
+							<p:dataTable var="dtoBean" value="#{selectOneMenuView.listDtoBean}" id="testTable">
+								<p:column headerText="Data Field">
+									<h:outputText value="#{dtoBean.string}" />
+								</p:column>
+
+								<p:column headerText="Operator">
+									<h:outputText value="#{dtoBean.string2}" />
+								</p:column>
+
+								<p:column headerText="Value">
+									<h:outputText value="#{dtoBean.string3}" />
+								</p:column>
+								<p:column headerText="Action">
+									<p:commandButton value="Delete" actionListener="#{selectOneMenuView.deleteEditTab(dtoBean)}" update="testTable" />
+								</p:column>
+
+
+							</p:dataTable>
+
+							<h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="5">
+								<p:commandButton value="+" id="ajax" actionListener="#{selectOneMenuView.addEditTab}" update="testTable" />
+								<h:selectOneMenu id="menuId" value="#{selectOneMenuView.city}">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItems value="#{selectOneMenuView.cities}" />
+								</h:selectOneMenu>
+
+
+								<h:selectOneMenu id="menuId2" value="#{selectOneMenuView.console}">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItem itemLabel="Equal" itemValue="Equal" />
+									<f:selectItem itemLabel="Not equal" itemValue="Not equal" />
+									<f:selectItem itemLabel="Smaller than" itemValue="Smaller Than" />
+									<f:selectItem itemLabel="Bigger than" itemValue="Bigger Than" />
+									<f:selectItem itemLabel="Like" itemValue="Like" />
+								</h:selectOneMenu>
+
+								<h:inputText value="C" id="textC" />
+
+								<p:commandButton value="Filter" />
+								<p:commandButton value="Clear" update="testTable" actionListener="#{selectOneMenuView.clearEditTab}" />
+
+							</h:panelGrid>
+
+
+						</h:form>
+</h:panelGrid>
+
+					</h:panelGrid>
+				</p:tab>
+			</p:tabView>
+		</h:form>
+	</div>
+</ui:composition>

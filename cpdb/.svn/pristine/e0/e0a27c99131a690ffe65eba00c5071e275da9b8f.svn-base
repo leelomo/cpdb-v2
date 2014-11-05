@@ -1,0 +1,77 @@
+
+package hk.ed.cpdb.bean;
+
+import hk.ed.cpdb.dto.FilterDto;
+
+import java.io.Serializable;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+
+//@SuppressWarnings("serial")
+//@ManagedBean(name = "filterBean")
+//@ViewScoped
+public class FilterBean {
+
+	public FilterBean(){
+		super();
+	}
+
+	public FilterBean(Object o){
+		super();
+		getFilterFields(o);
+	}
+
+	private List<String> filterFields;
+
+	private List<FilterDto> filterList = new ArrayList<FilterDto>();
+
+	@PostConstruct
+	public void init(){
+	}
+
+	private void getFilterFields(Object o){
+		Field[] fs = o.getClass().getDeclaredFields();
+		filterFields = new ArrayList<String>();
+		for (Field f : fs) {
+			filterFields.add(f.getName());
+		}
+	}
+
+	public void addFilterRow(){
+		System.out.println("add row");
+		filterList.add(new FilterDto());
+	}
+
+	public void deleteFilterRow(FilterDto filterDto){
+		System.out.println("del row");
+		filterList.remove(filterDto);
+	}
+
+	public void clearEditTab(){
+		System.out.println("cls row");
+		filterList.clear();
+	}
+
+	public List<String> getFilterFields(){
+		return filterFields;
+	}
+
+	public void setFilterFields(List<String> filterFields){
+		this.filterFields = filterFields;
+	}
+
+	public List<FilterDto> getFilterList(){
+		return filterList;
+	}
+
+	public void setFilterList(List<FilterDto> filterList){
+		this.filterList = filterList;
+	}
+
+
+}

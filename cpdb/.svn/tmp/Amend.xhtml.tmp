@@ -1,0 +1,81 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+>
+
+	<div align="center" class="bg-red">
+
+		<p:tabView>
+			<p:tab title="Download">
+				<h:panelGrid columns="2" cellpadding="10">
+					<h:panelGrid style="margin-left:30%;width:600px;">
+						<ui:insert name="filter">
+							<ui:include src="#{GlobalBean.filterPath}">
+								<ui:param name="filterBean" value="#{browseArticleBean.filterBean}" />
+							</ui:include>
+						</ui:insert>
+					</h:panelGrid>
+				</h:panelGrid>
+
+				<p:separator />
+
+				<p:dataTable id="withCommand" var="article" value="#{amendBean.articleList}" rowKey="#{article.id}">
+
+					<p:column headerText="Article Number (Virtual)">#{article.id}</p:column>
+					<p:column headerText="SAP Article Number">#{article.col1}</p:column>
+					<p:column headerText="System Status">#{article.col2}</p:column>
+					<p:column headerText="Article Status">#{article.col3}</p:column>
+					<p:column headerText="QA Status">#{article.col4}</p:column>
+				</p:dataTable>
+
+				<p:separator />
+
+				<h:commandButton class="main_left_button" value="Text">
+				</h:commandButton>
+	</p:tab>
+
+<<<<<<< .mine
+	<p:tab title="Upload">
+		<h:panelGrid columns="2" cellpadding="10">
+			<h:form>
+				<h:panelGrid columns="2" cellpadding="5">
+					<h:outputText value="Choose Article Template " />
+					<p:fileUpload value="#{createArticleBean.file}" mode="simple" />
+					<br />
+					<p:commandButton actionListener="#{createArticleBean.handleFileUpload}" value="Validate Article Template" ajax="false" />
+=======
+			<p:tab title="Upload">
+				<h:panelGrid columns="2" cellpadding="10">
+
+					<div align="center" style="border: 0x solid black; margin-top: 5%; margin-left: 30%; margin-right: 30%">
+						<div align="center">
+
+							<h:panelGrid style="  border-collapse: collapse;
+			 border:1px solid black;margin-top: 10%;">
+
+								<h:form id="form">
+
+
+									<h:panelGrid id="grid" columns="2" cellpadding="5">
+
+										<h:outputText value="Choose Article Template " />
+										<p:fileUpload value="#{createArticleBean.file}" mode="simple" />
+
+										<h:commandButton value="Validate Article Template" ajax="false" />
+									</h:panelGrid>
+
+
+								</h:form>
+							</h:panelGrid>
+
+						</div>
+					</div>
+
+>>>>>>> .r40
+				</h:panelGrid>
+			</h:form>
+		</h:panelGrid>
+	</p:tab>
+
+	</p:tabView>
+	</div>
+</ui:composition>

@@ -1,0 +1,100 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<div align="left">
+		<f:ajax render=":layoutMain" execute="@this">
+			<p:tabView id="tabview" scrollable="true">
+				<p:tab title="#{languageLabel['PRODUCT_DEFINITON_Define_product_Template_Page_Title_Main']}">
+					<h:panelGrid>
+						<ui:insert name="filter"
+							style="border-style:solid; border-width:1px">
+							<ui:include src="#{GlobalBean.filterPath}">
+								<ui:param name="filterBean"
+									value="#{defineDataFieldsBean.filterBean}" />
+							</ui:include>
+						</ui:insert>
+					</h:panelGrid>
+					<p:separator />
+					<div align="center">
+						<p:commandButton value="#{languageLabel['PRODUCT_DEFINITON_Define_product_Template_Button_Title_New']}" styleClass="p_green_button"></p:commandButton>
+						<p:commandButton value="#{languageLabel['PRODUCT_DEFINITON_Define_product_Template_Button_Title_Delete']}" styleClass="p_red_button"></p:commandButton>
+					</div>
+					<h:form>
+						<p:dataTable id="withCommand" var="target"
+							value="#{defineDataFieldsBean.defineDataFieldList}"
+							rowKey="#{target.id}">
+							<p:column headerText="#{languageLabel['PRODUCT_DEFINITON_Define_product_Template_DataTable_Title_Field_Key']}">#{target.id}</p:column>
+							<p:column headerText="#{languageLabel['PRODUCT_DEFINITON_Define_product_Template_DataTable_Title_Filed_Name']}">#{target.name}</p:column>
+							<p:column headerText="#{languageLabel['PRODUCT_DEFINITON_Define_product_Template_DataTable_Title_Field_Description']}">#{target.desc}</p:column>
+							<p:column headerText="#{languageLabel['PRODUCT_DEFINITON_Define_product_Template_DataTable_Title_Action']}">
+								<h:commandButton update=":tabview" value="Edit"
+									actionListener="#{defineDataFieldsBean.addEditTab}"
+									styleClass="h_green_button">
+									<f:param name="Field Key" value="#{target.id}" />
+									<f:param name="Filed Name" value="#{target.name}" />
+									<f:param name="Field Description" value="#{target.desc}" />
+								</h:commandButton>
+							</p:column>
+						</p:dataTable>
+					</h:form>
+
+				</p:tab>
+				<c:forEach items="#{defineDataFieldsBean.dtoList}" var="dto">
+					<p:tab title="#{dto.defineDataField.name}">
+						<h:form>
+							<h:commandButton update=":tabview" value="Close"
+								action="#{defineDataFieldsBean.onEditTabClose}">
+								<f:param name="index" value="#{dto.index}" />
+							</h:commandButton>
+							<h:panelGrid columns="3" cellpadding="10">
+								<h:outputText value="Key : " />
+								<p:inputText value="Value" />
+								<h:outputText value="" />
+								<h:outputText value="Key : " />
+								<p:inputText value="Value" />
+								<h:outputText value="" />
+								<h:outputText value="Key : " />
+								<p:inputText value="Value" />
+								<h:outputText value="" />
+
+								<p:commandButton value="Save" styleClass="p_green_button">
+									<p:confirm header="Confirmation" message="Are you sure?"
+										icon="ui-icon-alert" />
+								</p:commandButton>
+								<p:commandButton value="Cancel" styleClass="p_red_button">
+									<p:confirm header="Confirmation" message="Are you sure?"
+										icon="ui-icon-alert" />
+								</p:commandButton>
+								<p:commandButton value="Delete" styleClass="p_red_button">
+									<p:confirm header="Confirmation" message="Are you sure?"
+										icon="ui-icon-alert" />
+								</p:commandButton>
+
+
+							</h:panelGrid>
+							<p:confirmDialog global="true" showEffect="fade"
+								hideEffect="explode">
+								<p:commandButton value="Yes" type="button"
+									styleClass="ui-confirmdialog-yes p_green_button"
+									icon="ui-icon-check" />
+								<p:commandButton value="No" type="button"
+									styleClass="ui-confirmdialog-no p_red_button"
+									icon="ui-icon-close" />
+							</p:confirmDialog>
+						</h:form>
+					</p:tab>
+				</c:forEach>
+
+
+
+			</p:tabView>
+
+		</f:ajax>
+
+	</div>
+</ui:composition>

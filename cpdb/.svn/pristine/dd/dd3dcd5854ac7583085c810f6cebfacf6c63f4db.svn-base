@@ -1,0 +1,98 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core"
+>
+
+	<div align="center">
+		<p:tabView id="tabview">
+
+			<p:tab title="Main">
+				<h:panelGrid columns="1" cellpadding="10">
+				
+					<h:form>
+					<h:panelGrid  style="width:600px;margin-left:30%;">
+						<h:form id="formId">
+						
+		<p:dataTable var="dtoBean" value="#{selectOneMenuView.listDtoBean}"
+			id="testTable">
+			<p:column headerText="Data Field">
+				<h:outputText value="#{dtoBean.string}" />
+			</p:column>
+
+			<p:column headerText="Opeater">
+				<h:outputText value="#{dtoBean.string2}" />
+			</p:column>
+
+			<p:column headerText="Value">
+				<h:outputText value="#{dtoBean.string3}" />
+			</p:column>
+			<p:column headerText="Action">
+				<p:commandButton value="Delete" 
+					actionListener="#{selectOneMenuView.deleteEditTab(dtoBean)}" update="testTable" />
+			</p:column>
+
+
+		</p:dataTable>
+
+		<h:panelGrid columns="4" style="margin-bottom:10px" cellpadding="5">
+			<p:commandButton value="+" id="ajax"
+				actionListener="#{selectOneMenuView.addEditTab}" update="testTable" />
+			<h:selectOneMenu id="menuId" value="#{selectOneMenuView.city}">
+				<f:selectItem itemLabel="Select One" itemValue="" />
+				<f:selectItems value="#{selectOneMenuView.cities}" />
+			</h:selectOneMenu>
+
+
+			<h:selectOneMenu id="menuId2" value="#{selectOneMenuView.console}">
+				<f:selectItem itemLabel="Select One" itemValue="" />
+				<f:selectItem itemLabel="Equal" itemValue="Equal" />
+				<f:selectItem itemLabel="Not equal" itemValue="Not equal" />
+				<f:selectItem itemLabel="Smaller than" itemValue="Smaller Than" />
+				<f:selectItem itemLabel="Bigger than" itemValue="Bigger Than" />
+				<f:selectItem itemLabel="Like" itemValue="Like" />
+			</h:selectOneMenu>
+
+			<h:inputText value="C" id="textC" />
+
+			<p:commandButton value="Filter" />
+			<p:commandButton value="Clear" update="testTable"
+				actionListener="#{selectOneMenuView.clearEditTab}" />
+
+		</h:panelGrid>
+
+
+	</h:form></h:panelGrid>
+						<p:separator></p:separator>
+						<p:dataTable value="#{defineProductTemplateBean.productTemplates}" var="target">
+							<p:column headerText="#">
+								<h:outputText value="#{target.ptId}" />
+							</p:column>
+
+							<p:column headerText="Template Name">
+								<h:outputText value="#{target.ptName}" />
+							</p:column>
+
+							<p:column>
+								<h:commandButton update=":tabview" value="Edit" actionListener="#{defineProductTemplateBean.addEditTab}">
+									<f:param name="id" value="#{target.ptId}" />
+									<f:param name="name" value="#{target.ptName}" />
+									<f:param name="desc" value="desc" />
+								</h:commandButton>
+							</p:column>
+						</p:dataTable>
+					</h:form>
+				</h:panelGrid>
+			</p:tab>
+
+			<c:forEach items="#{defineProductTemplateBean.dtoList}" var="dto">
+				<p:tab title="Tab">
+					<h:form>
+						<h:commandButton update=":tabview" value="Close" action="#{defineProductTemplateBean.onEditTabClose}">
+							<f:param name="index" value="#{dto.index}" />
+						</h:commandButton>
+					</h:form>
+				</p:tab>
+			</c:forEach>
+		</p:tabView>
+	</div>
+
+</ui:composition>

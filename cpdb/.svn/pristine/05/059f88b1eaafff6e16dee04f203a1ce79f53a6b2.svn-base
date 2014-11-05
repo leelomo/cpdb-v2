@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+>
+	<div align="center">
+		<h:panelGrid style="width:600px;">
+			<h:panelGrid columns="2" cellpadding="10">
+				<h:form>
+					<p:dataTable value="#{browseArticleBean.filterBean.filterList}" var="filterDto" id="filterTable" editable="true" styleClass="hide-column-names">
+						<p:ajax event="rowEdit" />
+						<p:ajax event="rowEditCancel" />
+
+						<p:column headerText="Action" style="width:30px">
+							<p:commandButton value="-" actionListener="#{browseArticleBean.filterBean.deleteFilterRow(filterDto)}" update="filterTable" />
+						</p:column>
+
+						<p:column headerText="Data Field">
+							<h:selectOneMenu value="#{filterDto.field}" style="width: 100%;">
+								<f:selectItem itemLabel="Select One" itemValue="" />
+								<f:selectItems value="#{browseArticleBean.filterBean.filterFields}" var="filterField" itemLabel="#{filterField}" />
+							</h:selectOneMenu>
+						</p:column>
+
+						<p:column headerText="Operator">
+							<h:selectOneMenu value="#{filterDto.operator}" style="width: 100%;">
+								<f:selectItem itemLabel="null" itemValue="" />
+								<f:selectItem itemLabel="Equal" itemValue="Equal" />
+								<f:selectItem itemLabel="Not equal" itemValue="NotEqual" />
+								<f:selectItem itemLabel="Smaller than" itemValue="SmallerThan" />
+								<f:selectItem itemLabel="Bigger than" itemValue="BiggerThan" />
+								<f:selectItem itemLabel="Like" itemValue="Like" />
+							</h:selectOneMenu>
+						</p:column>
+
+						<p:column headerText="Value">
+							<h:inputText value="#{filterDto.value}" style="width: 100%;" />
+						</p:column>
+
+					</p:dataTable>
+
+
+					<h:panelGrid columns="5" style="margin-bottom:10px" cellpadding="5">
+						<p:commandButton value="+" action="#{browseArticleBean.filterBean.addFilterRow}" update="filterTable" />
+						<p:commandButton value="Clear" action="#{browseArticleBean.filterBean.clearEditTab}" update="filterTable" />
+
+						<p:commandButton value="Filter" />
+
+					</h:panelGrid>
+				</h:form>
+
+			</h:panelGrid>
+		</h:panelGrid>
+	</div>
+
+</ui:composition>

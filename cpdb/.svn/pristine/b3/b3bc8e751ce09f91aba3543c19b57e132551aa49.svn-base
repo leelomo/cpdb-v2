@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "htth://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>#{GlobalBean.title}</title>
+
+	<link type="text/css" rel="stylesheet" href="#{GlobalBean.cssMainPath}" />
+
+</h:head>
+<h:body>
+
+	<div align="center">
+
+
+		<h:form id="formName">
+
+			<p:separator />
+
+			<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+
+			<div class="notShow" visible="false">
+
+				<p:commandButton for="messages" value="Info" actionListener="#{createArticleMassValBean.info}" id="buttonId2" visible="false" />
+
+				<!-- <p:commandButton value="123" visible="false"> </p:commandButton> -->
+			</div>
+
+			<p:dataTable id="withCommand" var="article" value="#{createArticleMassValBean.massCreation}">
+				<p:column headerText="#">#{article.id}</p:column>
+				<p:column headerText="Article Description">#{article.col1}</p:column>
+				<p:column headerText="Validation Result">
+					<div style="#{createArticleMassValBean.getInlineCss(article.col2)}">#{article.col2}</div>
+				</p:column>
+				<p:column headerText="Number of error">#{article.col3}</p:column>
+
+				<p:column headerText="Error Detail">
+					<p:commandButton value="View" type="button" onclick="PF('dlg1').show();" />
+				</p:column>
+			</p:dataTable>
+
+			<p:dialog header="Error Message" widgetVar="dlg1" minHeight="40">
+				<h:outputText value="404 ~Error MessageError MessageError MessageError MessageError Message" />
+			</p:dialog>
+
+			<p:commandButton value="Download Error Summary" ajax="false">
+				<p:fileDownload value="#{createArticleBean.downloadFile}" />
+			</p:commandButton>
+
+			<p:commandButton value="Download failed Articles" ajax="false">
+				<p:fileDownload value="#{createArticleBean.downloadFile}" />
+			</p:commandButton>
+			<br />
+
+			<h:commandButton value="Cancel Request" action="#{ContectBean.doNav}">
+				<f:param name="page" value="/pages/CreateArticle.xhtml" />
+				<f:param name="pageName" value="Create Article" />
+			</h:commandButton>
+			<h:commandButton value="Submit Passes Articles" action="#{ContectBean.doNav}">
+				<f:param name="page" value="/pages/CreateArticle.xhtml" />
+				<f:param name="pageName" value="Create Article" />
+			</h:commandButton>
+			<br />
+
+
+		</h:form>
+
+
+	</div>
+
+
+</h:body>
+
+<Script>
+	$(document).ready(function() {
+		document.getElementById('formName:buttonId2').click();
+	});
+</Script>
+</html>

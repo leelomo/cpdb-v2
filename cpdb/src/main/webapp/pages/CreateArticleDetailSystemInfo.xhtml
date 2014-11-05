@@ -1,0 +1,45 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core"
+>
+
+	<h:panelGrid columns="2" cellpadding="10">
+
+		<h:outputText value="Summary" />
+		<h:outputText value="" />
+		<h:outputText value="" />
+								Article Number (Virtual)<br />
+					           	Created Time<br />
+					           	Created By<br />
+					           	Modified Time<br />
+					           	Modified By<br />
+					           	etc.
+							<h:outputText value="Change Log" />
+		<h:outputText value="" />
+		<h:outputText value="" />
+		<p:dataTable var="changelog" value="#{changeLogBean.changeLogs}">
+
+			<p:column headerText="Change #">
+				<h:outputText value="#{changelog.changeLogId}" />
+			</p:column>
+			<p:column headerText="Time">
+				<h:outputText value="#{changelog.time}" />
+			</p:column>
+
+			<p:column headerText="User">
+				<h:outputText value="#{changelog.user}" />
+			</p:column>
+
+			<p:column headerText="Type">
+				<h:outputText value="#{changelog.type}" />
+			</p:column>
+			<p:column headerText="Market">
+				<h:outputText value="#{changelog.market}" />
+			</p:column>
+			<p:column headerText="Description">
+				<h:outputText value="#{changelog.desc}" />
+			</p:column>
+		</p:dataTable>
+	</h:panelGrid>
+
+</ui:composition>

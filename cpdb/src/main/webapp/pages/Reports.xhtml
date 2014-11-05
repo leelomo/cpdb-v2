@@ -1,0 +1,83 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<div align="center">
+		<h:form>
+			<p:tabView>
+				<p:tab title="#{languageLabel['REPORT_Tab_Title_report1']}">
+					<h:panelGrid>
+						<ui:insert name="filter" style="border-style:solid; border-width:1px">
+							<ui:include src="#{GlobalBean.filterPath}">
+								<ui:param name="filterBean" value="#{reportBean.filterBean}" />
+							</ui:include>
+						</ui:insert>
+					</h:panelGrid>
+
+					<p:separator />
+					<p:commandButton
+						value="#{languageLabel['REPORT_P_Btn_Generate_Excel']}
+"
+						ajax="false" styleClass="myButton p_green_button main_left_button">
+					</p:commandButton>
+
+					<p:commandButton
+						value="#{languageLabel['REPORT_P_Btn_Generate_Table']}"
+						type="button" onclick="PF('dlg1').show();"
+						styleClass="myButton p_green_button main_left_button" />
+
+					<c:if test="#{reportBean.showTable}">
+						<h:panelGrid id="panelTable">
+							<h:form>
+								<p:dataTable id="withCommand" var="article"
+									value="#{reportBean.articleList}" rowKey="#{article.id}">
+									<p:column
+										headerText="#{languageLabel['REPORT_DataTable_Title_id']}">#{article.id}</p:column>
+									<p:column
+										headerText="#{languageLabel['REPORT_DataTable_Title_cod1']}">#{article.col1}</p:column>
+									<p:column
+										headerText="#{languageLabel['REPORT_DataTable_Title_cod2']}">#{article.col2}</p:column>
+									<p:column
+										headerText="#{languageLabel['REPORT_DataTable_Title_cod3']}">#{article.col3}</p:column>
+									<p:column
+										headerText="#{languageLabel['REPORT_DataTable_Title_cod4']}">#{article.col4}</p:column>
+								</p:dataTable>
+							</h:form>
+						</h:panelGrid>
+					</c:if>
+					<p:dialog header="Warning" widgetVar="dlg1" minHeight="40">
+						<h:outputText
+							value="#{languageLabel['REPORT_Label_Result_MoreThen_2000']}
+" />
+						<br></br>
+						<p:commandButton update="panelTable"
+							action="#{reportBean.doShowTable()}"
+							value="#{languageLabel['REPORT_P_Btn_Download_Excel']}"
+							ajax="false">
+						</p:commandButton>
+					</p:dialog>
+
+				</p:tab>
+				<p:tab title="#{languageLabel['REPORT_Tab_Title_report2']}">
+					<h:panelGrid columns="1" cellpadding="10">
+
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="#{languageLabel['REPORT_Tab_Title_report3']}">
+					<h:panelGrid columns="2" cellpadding="10">
+
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="#{languageLabel['REPORT_Tab_Title_report4']}">
+					<h:panelGrid columns="2" cellpadding="10">
+
+					</h:panelGrid>
+				</p:tab>
+			</p:tabView>
+		</h:form>
+	</div>
+
+</ui:composition>

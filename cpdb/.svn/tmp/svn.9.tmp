@@ -1,0 +1,81 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core"
+>
+
+	<div align="center">
+		<p:tabView id="tabview" scrollable="true">
+			<p:tab title="Main">
+				<h:panelGrid style="width:600px;">
+					<ui:insert name="filter">
+						<ui:include src="#{GlobalBean.filterPath}">
+							<ui:param name="filterBean" value="#{browseArticleBean.filterBean}" />
+						</ui:include>
+					</ui:insert>
+				</h:panelGrid>
+				<p:separator />
+
+				<p:commandButton value="New"></p:commandButton>
+				<p:commandButton value="Delete"></p:commandButton>
+
+				<h:form>
+					<p:dataTable id="withCommand" var="target" value="#{defineDataFieldsBean.defineDataFieldList}" rowKey="#{target.id}">
+						<p:column headerText="Field Key">#{target.id}</p:column>
+						<p:column headerText="Filed Name">#{target.name}</p:column>
+						<p:column headerText="Field Description">#{target.desc}</p:column>
+						<p:column headerText="Action">
+							<h:commandButton update=":tabview" value="Edit" actionListener="#{defineDataFieldsBean.addEditTab}">
+								<f:param name="Field Key" value="#{target.id}" />
+								<f:param name="Filed Name" value="#{target.name}" />
+								<f:param name="Field Description" value="#{target.desc}" />
+							</h:commandButton>
+						</p:column>
+					</p:dataTable>
+				</h:form>
+
+			</p:tab>
+			<c:forEach items="#{defineDataFieldsBean.dtoList}" var="dto">
+				<p:tab title="#{dto.defineDataField.name}">
+					<h:form>
+						<h:commandButton update=":tabview" value="Close" action="#{defineDataFieldsBean.onEditTabClose}">
+							<f:param name="index" value="#{dto.index}" />
+						</h:commandButton>
+						<h:panelGrid columns="3" cellpadding="10">
+							<h:outputText value="Key : " />
+							<p:inputText value="Value" />
+							<h:outputText value="" />
+							<h:outputText value="Key : " />
+							<p:inputText value="Value" />
+							<h:outputText value="" />
+							<h:outputText value="Key : " />
+							<p:inputText value="Value" />
+							<h:outputText value="" />
+
+							<p:commandButton value="Save">
+								<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+							</p:commandButton>
+							<p:commandButton value="Cancel">
+								<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+							</p:commandButton>
+							<p:commandButton value="Delete">
+								<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+							</p:commandButton>
+
+
+						</h:panelGrid>
+						<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+							<p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+							<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+						</p:confirmDialog>
+					</h:form>
+				</p:tab>
+			</c:forEach>
+
+
+
+		</p:tabView>
+
+
+
+	</div>
+</ui:composition>
